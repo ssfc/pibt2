@@ -112,6 +112,8 @@ int main(int argc, char* argv[])
   return 0;
 }
 
+
+// 根据传入的求解器名称动态创建并初始化对应的MAPF（多智能体路径规划）求解器实例，并设置相关参数和输出详细信息开关，最后返回该实例。
 std::unique_ptr<MAPF_Solver> getSolver(const std::string solver_name,
                                        MAPF_Instance* P, bool verbose, int argc,
                                        char* argv[])
