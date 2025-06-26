@@ -93,6 +93,7 @@ void PIBT::run()
   for (auto a : A) delete a;
 }
 
+// 为单个智能体（ai）在下一步寻找一个合适的位置，尽可能避免与其它智能体冲突，同时能处理优先级冲突与递归回溯。
 bool PIBT::funcPIBT(Agent* ai, Agent* aj)
 {
   // compare two nodes
