@@ -4,6 +4,8 @@
 
 const std::string PushAndSwap::SOLVER_NAME = "PushAndSwap";
 
+
+// 初始化 PushAndSwap 类的对象，并对类成员变量进行赋值。
 PushAndSwap::PushAndSwap(MAPF_Instance* _P)
     : MAPF_Solver(_P),
       flg_compress(true),
