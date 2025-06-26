@@ -107,6 +107,8 @@ bool PushAndSwap::push(Plan& plan, const int id, Nodes& U,
   return true;
 }
 
+
+// 让当前智能体 r 与挡在其前方（即下一个目标节点上的）智能体 s 交换位置。该交换操作旨在解决冲突，让路径上的智能体能够顺利推进。核心思路是多智能体解耦算法（PushAndSwap）中的“swap”操作。
 bool PushAndSwap::swap(Plan& plan, const int r, Nodes& U,
                        std::vector<int>& occupied_now)
 {
