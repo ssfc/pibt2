@@ -15,6 +15,7 @@ std::unique_ptr<MAPF_Solver> getSolver(const std::string solver_name,
                                        MAPF_Instance* P, bool verbose, int argc,
                                        char* argv[]);
 
+// 解析命令行参数、配置并执行求解流程。
 int main(int argc, char* argv[])
 {
   std::string instance_file = "";
@@ -39,6 +40,7 @@ int main(int argc, char* argv[])
   bool log_short = false;
   int max_comp_time = -1;
 
+  // 3. 解析命令行参数
   // command line args
   int opt, longindex;
   opterr = 0;  // ignore getopt error
