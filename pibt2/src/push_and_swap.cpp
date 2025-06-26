@@ -80,6 +80,7 @@ void PushAndSwap::run()
   }
 }
 
+// 将指定智能体（id）按照当前计划，一步步“推动”向目标点，并在推动过程中处理目标节点被其他智能体占据的情况。
 bool PushAndSwap::push(Plan& plan, const int id, Nodes& U,
                        std::vector<int>& occupied_now)
 {
