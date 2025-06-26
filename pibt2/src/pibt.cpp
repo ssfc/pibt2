@@ -160,6 +160,7 @@ void PIBT::setParams(int argc, char* argv[])
   }
 }
 
+// 在命令行输出PIBT算法的帮助信息，主要用于指导用户如何使用可用的命令行参数。
 void PIBT::printHelp()
 {
   std::cout << PIBT::SOLVER_NAME << "\n"
