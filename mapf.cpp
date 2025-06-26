@@ -138,6 +138,7 @@ std::unique_ptr<MAPF_Solver> getSolver(const std::string solver_name,
   return solver;
 }
 
+// 打印MAPF模拟器的命令行使用帮助信息
 void printHelp()
 {
   std::cout << "\nUsage: ./mapf [OPTIONS] [SOLVER-OPTIONS]\n"
