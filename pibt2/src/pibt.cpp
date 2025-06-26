@@ -2,6 +2,7 @@
 
 const std::string PIBT::SOLVER_NAME = "PIBT";
 
+// 初始化 PIBT 路径规划求解器实例。
 PIBT::PIBT(MAPF_Instance* _P)
     : MAPF_Solver(_P),
       occupied_now(Agents(G->getNodesSize(), nullptr)),
