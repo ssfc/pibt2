@@ -140,6 +140,7 @@ bool PIBT::funcPIBT(Agent* ai, Agent* aj)
   return false;
 }
 
+// 根据命令行参数设置 PIBT 算法的内部参数。
 void PIBT::setParams(int argc, char* argv[])
 {
   struct option longopts[] = {
