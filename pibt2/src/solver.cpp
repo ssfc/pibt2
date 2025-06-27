@@ -321,6 +321,7 @@ MinimumSolver::AstarNode::AstarNode(Node* _v, int _g, int _f, AstarNode* _p)
 {
 }
 
+// 根据传入的节点指针 _v 和一个代价值 _g，生成一个字符串用于标识该节点。
 std::string MinimumSolver::AstarNode::getName(Node* _v, int _g)
 {
   return std::to_string(_v->id) + "-" + std::to_string(_g);
