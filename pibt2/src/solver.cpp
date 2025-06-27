@@ -288,6 +288,8 @@ int MAPF_Solver::pathDist(const int i) const
   return pathDist(i, P->getStart(i));
 }
 
+// 为每一个智能体（agent）构建一张距离表，用于记录该智能体的目标节点（goal）到图中所有其他节点的最短距离。
+// 方法是以目标节点为起点，使用广度优先搜索（BFS）遍历图，从而填充距离表。
 void MAPF_Solver::createDistanceTable()
 {
   for (int i = 0; i < P->getNum(); ++i) {
