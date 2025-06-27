@@ -510,6 +510,7 @@ void MAPF_Solver::updatePathTable(const Paths& paths, const int id)
   }
 }
 
+// 除（重置）全局路径表 PATH_TABLE，让其中记录的已占用信息全部恢复为空（即未被任何智能体占用的状态）。
 void MAPF_Solver::clearPathTable(const Paths& paths)
 {
   const int makespan = paths.getMakespan();
