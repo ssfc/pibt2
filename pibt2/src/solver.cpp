@@ -53,6 +53,7 @@ bool MinimumSolver::overCompTime() const
   return getSolverElapsedTime() >= max_comp_time;
 }
 
+// 检查 verbose 标志（通常用于控制调试或日志输出的详细等级）。
 // -------------------------------
 // utilities for debug
 // -------------------------------
