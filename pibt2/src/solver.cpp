@@ -282,6 +282,7 @@ int MAPF_Solver::pathDist(const int i, Node* const s) const
   return distance_table[i][s->id];
 }
 
+// 获取编号为 i 的智能体（agent）从其起点位置出发的距离信息。
 int MAPF_Solver::pathDist(const int i) const
 {
   return pathDist(i, P->getStart(i));
