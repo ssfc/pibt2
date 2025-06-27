@@ -25,6 +25,7 @@ void MinimumSolver::solve()
   end();
 }
 
+// 该函数记录算法或求解器开始运行的时间点。
 void MinimumSolver::start() { t_start = Time::now(); }
 
 void MinimumSolver::end() { comp_time = getSolverElapsedTime(); }
