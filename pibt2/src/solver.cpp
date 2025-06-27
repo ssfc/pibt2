@@ -1,7 +1,7 @@
 #include "../include/solver.hpp"
 
 #include <fstream>
-#include <iomanip>
+#include <iomanip> // 持流输入输出（IO）时的数据格式控制，也就是“输入输出格式化”的意思。
 
 
 // 传入的 Problem 对象 _P 初始化 MinimumSolver 类的各项成员变量。
