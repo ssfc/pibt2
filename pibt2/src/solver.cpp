@@ -129,6 +129,7 @@ void MAPF_Solver::computeLowerBounds()
   }
 }
 
+// 获取所有智能体最短路径之和（SOC，Sum Of Costs）的下界。
 int MAPF_Solver::getLowerBoundSOC()
 {
   if (LB_soc == 0) computeLowerBounds();
