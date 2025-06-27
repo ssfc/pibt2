@@ -30,10 +30,10 @@ void MinimumSolver::start() { t_start = Time::now(); }
 
 void MinimumSolver::end() { comp_time = getSolverElapsedTime(); }
 
+// 获取并返回自求解器（solver）开始运行以来所经过的时间（单位：毫秒）。
 // -------------------------------
 // utilities for time
 // -------------------------------
-
 int MinimumSolver::getSolverElapsedTime() const
 {
   return getElapsedTime(t_start);
