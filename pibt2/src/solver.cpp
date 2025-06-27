@@ -409,6 +409,7 @@ MinimumSolver::CompareAstarNode MinimumSolver::compareAstarNodeBasic =
       return false;
     };
 
+// 优先级规则下单一智能体寻路的主要逻辑
 Path MAPF_Solver::getPrioritizedPath(
     const int id, const Paths& paths, const int time_limit,
     const int upper_bound,
