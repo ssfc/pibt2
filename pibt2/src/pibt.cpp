@@ -62,13 +62,15 @@ void PIBT::run()
     // acting
     bool check_goal_cond = true;
     Config config(P->getNum(), nullptr);
-    for (auto a : A) {
+    for (auto a : A)
+    {
       // clear
       if (occupied_now[a->v_now->id] == a) occupied_now[a->v_now->id] = nullptr;
       occupied_next[a->v_next->id] = nullptr;
       // set next location
-      config[a->id] = a->v_next;
-      occupied_now[a->v_next->id] = a;
+      config[a->id] = a->v_next; // 更新位置
+      occupied_now[a->v_next->id] = a; // 标记新位置被占
+      // 检查是否全部到达目标
       // check goal condition
       check_goal_cond &= (a->v_next == a->g);
 
@@ -76,27 +78,33 @@ void PIBT::run()
       // update priority
       a->elapsed = (a->v_next == a->g) ? 0 : a->elapsed + 1;
       // reset params
+      // 更新当前节点
       a->v_now = a->v_next;
+      // 重置下一步变量
       a->v_next = nullptr;
     }
 
+    // 路径记录
     // update plan
     solution.add(config);
 
     ++timestep;
 
+    // 全部到达终点
     // success
     if (check_goal_cond) {
       solved = true;
       break;
     }
 
+    // 超时或步数过多则退出
     // failed
     if (timestep >= max_timestep || overCompTime()) {
       break;
     }
   }
 
+  // 4. 内存回收
   // memory clear
   for (auto a : A) delete a;
 }
