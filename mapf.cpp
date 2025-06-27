@@ -147,7 +147,7 @@ std::unique_ptr<MAPF_Solver> getSolver(const std::string solver_name,
 
   solver->setParams(argc, argv);
   solver->setVerbose(verbose);
-  
+
   return solver;
 }
 

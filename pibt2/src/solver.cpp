@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iomanip>
 
+
+// 传入的 Problem 对象 _P 初始化 MinimumSolver 类的各项成员变量。
 MinimumSolver::MinimumSolver(Problem* _P)
     : solver_name(""),
       G(_P->getG()),
