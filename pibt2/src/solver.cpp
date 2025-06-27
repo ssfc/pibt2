@@ -113,6 +113,7 @@ void MAPF_Solver::exec()
   run();
 }
 
+// 计算多智能体路径规划（MAPF）问题的两个常用下界
 // -------------------------------
 // utilities for problem instance
 // -------------------------------
