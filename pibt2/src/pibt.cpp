@@ -27,8 +27,8 @@ void PIBT::run()
 
   // initialize
   for (int i = 0; i < P->getNum(); ++i) {
-    Node* s = P->getStart(i);
-    Node* g = P->getGoal(i);
+    Node* s = P->getStart(i); // 起点
+    Node* g = P->getGoal(i); // 终点
     int d = disable_dist_init ? 0 : pathDist(i);
     Agent* a = new Agent{i,                          // id
                          s,                          // current location
