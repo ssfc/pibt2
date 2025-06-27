@@ -76,6 +76,7 @@ void MinimumSolver::warn(const std::string& msg) const
   std::cout << "warn@ " << solver_name << ": " << msg << std::endl;
 }
 
+// 初始化一个多智能体路径规划（MAPF）求解器对象，并为后续的求解操作做好准备。
 // -----------------------------------------------
 // base class with utilities
 // -----------------------------------------------
