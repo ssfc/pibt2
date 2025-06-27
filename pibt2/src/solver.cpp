@@ -161,6 +161,7 @@ Paths MAPF_Solver::planToPaths(const Plan& plan)
   return paths;
 }
 
+// 将每个智能体的独立行走路径（Paths）转换成一个整体的时间步进计划（Plan），即还原为以时间为主序的多智能体位置排布。
 Plan MAPF_Solver::pathsToPlan(const Paths& paths)
 {
   Plan plan;
