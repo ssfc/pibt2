@@ -551,6 +551,7 @@ void MAPF_Solver::updatePathTableWithoutClear(const int id, const Path& p,
   }
 }
 
+// 初始化 MAPD_Solver 类的各项成员变量，为后续多智能体路径调度（MAPD）任务的求解做准备。
 //-----------------------------------------------------
 // MAPD Solver
 MAPD_Solver::MAPD_Solver(MAPD_Instance* _P, bool _use_distance_table)
