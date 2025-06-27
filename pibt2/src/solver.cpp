@@ -493,6 +493,7 @@ Path MAPF_Solver::getPrioritizedPath(
   return p;
 }
 
+// 根据所有智能体（除了当前规划的智能体）已有的路径，更新全局的时空占据表
 void MAPF_Solver::updatePathTable(const Paths& paths, const int id)
 {
   const int makespan = paths.getMakespan();
