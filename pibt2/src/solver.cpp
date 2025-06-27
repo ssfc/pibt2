@@ -327,6 +327,7 @@ std::string MinimumSolver::AstarNode::getName(Node* _v, int _g)
   return std::to_string(_v->id) + "-" + std::to_string(_g);
 }
 
+// 空间-时间A*路径规划的主算法，其核心目标是在存在具有时序约束（比如动态障碍物或时间窗口）的图中，从起点s搜索到终点g的一条可行路径。
 Path MinimumSolver::getPathBySpaceTimeAstar(
     Node* const s, Node* const g, AstarHeuristics& fValue,
     CompareAstarNode& compare, CheckAstarFin& checkAstarFin,
