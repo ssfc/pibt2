@@ -92,6 +92,7 @@ MAPF_Solver::MAPF_Solver(MAPF_Instance* _P)
 {
 }
 
+// 析构函数
 MAPF_Solver::~MAPF_Solver() {}
 
 // 执行多智能体路径规划（MAPF）求解器的初始化和主流程。
