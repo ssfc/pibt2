@@ -312,6 +312,7 @@ void MAPF_Solver::createDistanceTable()
   }
 }
 
+// 构造函数，实现了对 A* 搜索节点各成员变量的初始化。
 // -------------------------------
 // utilities for getting path
 // -------------------------------
