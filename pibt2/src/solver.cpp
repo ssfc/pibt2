@@ -136,6 +136,7 @@ int MAPF_Solver::getLowerBoundSOC()
   return LB_soc;
 }
 
+// 获取所有智能体“最短最大路径长度”（Makespan）的下界。
 int MAPF_Solver::getLowerBoundMakespan()
 {
   if (LB_makespan == 0) computeLowerBounds();
