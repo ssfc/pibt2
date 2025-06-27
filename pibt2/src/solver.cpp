@@ -669,6 +669,7 @@ void MAPD_Solver::makeLogBasicInfo(std::ofstream& log)
   log << "preprocessing_comp_time=" << preprocessing_comp_time << "\n";
 }
 
+// 详细记录当前多智能体任务调度（MAPD）求解结果，包含智能体起始位置、完成的任务详情以及各个时间步下所有智能体的行走轨迹及任务状态。
 void MAPD_Solver::makeLogSolution(std::ofstream& log)
 {
   if (log_short) return;
