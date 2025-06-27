@@ -70,6 +70,7 @@ void MinimumSolver::halt(const std::string& msg) const
   std::exit(1);
 }
 
+// 向控制台输出警告信息。
 void MinimumSolver::warn(const std::string& msg) const
 {
   std::cout << "warn@ " << solver_name << ": " << msg << std::endl;
