@@ -48,10 +48,12 @@ void PIBT::run()
     info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
 
     // planning
-    std::sort(A.begin(), A.end(), compare);
+    std::sort(A.begin(), A.end(), compare); // 按优先级排序
     for (auto a : A) {
       // if the agent has next location, then skip
-      if (a->v_next == nullptr) {
+      if (a->v_next == nullptr)
+      {
+        // 为 agent 决策下一步目标
         // determine its next location
         funcPIBT(a);
       }
