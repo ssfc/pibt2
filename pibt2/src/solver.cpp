@@ -28,6 +28,7 @@ void MinimumSolver::solve()
 // 该函数记录算法或求解器开始运行的时间点。
 void MinimumSolver::start() { t_start = Time::now(); }
 
+// 在求解器（solver）运行结束时，记录并保存其总共消耗的计算时间（以毫秒为单位）。
 void MinimumSolver::end() { comp_time = getSolverElapsedTime(); }
 
 // 获取并返回自求解器（solver）开始运行以来所经过的时间（单位：毫秒）。
