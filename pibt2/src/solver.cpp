@@ -633,6 +633,7 @@ float MAPD_Solver::getAverageServiceTime()
   return getTotalServiceTime() / P->getClosedTasks().size();
 }
 
+// 打印并展示多智能体路径规划求解器（MAPD_Solver）的运行结果与主要性能指标，方便用户直观查看求解结果和相关统计信息。
 void MAPD_Solver::printResult()
 {
   std::cout << "solved=" << solved << ", solver=" << std::right << std::setw(8)
