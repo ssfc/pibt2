@@ -47,6 +47,7 @@ int MinimumSolver::getRemainedTime() const
   return std::max(0, max_comp_time - getSolverElapsedTime());
 }
 
+// 检测求解器的运行时间是否已达到或超过允许的最大计算时间。
 bool MinimumSolver::overCompTime() const
 {
   return getSolverElapsedTime() >= max_comp_time;
