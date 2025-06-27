@@ -586,6 +586,7 @@ void MAPD_Solver::solve()
 // 调用同一个类的 run() 方法。
 void MAPD_Solver::exec() { run(); }
 
+// 计算两个节点之间的最短路径距离，并根据是否使用预处理好的距离表选择不同的计算方式。
 int MAPD_Solver::pathDist(Node* const s, Node* const g) const
 {
   if (use_distance_table) return distance_table[s->id][g->id];
