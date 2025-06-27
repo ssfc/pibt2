@@ -593,6 +593,7 @@ int MAPD_Solver::pathDist(Node* const s, Node* const g) const
   return G->pathDist(s, g);
 }
 
+// 构建一个图中所有节点对之间的最短路径距离表。
 void MAPD_Solver::createDistanceTable()
 {
   const int nodes_num = G->getNodesSize();
