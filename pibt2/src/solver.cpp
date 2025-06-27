@@ -583,6 +583,7 @@ void MAPD_Solver::solve()
   end();
 }
 
+// 调用同一个类的 run() 方法。
 void MAPD_Solver::exec() { run(); }
 
 int MAPD_Solver::pathDist(Node* const s, Node* const g) const
