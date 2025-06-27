@@ -617,6 +617,7 @@ void MAPD_Solver::createDistanceTable()
   }
 }
 
+// 计算所有已完成任务的总服务时间。
 float MAPD_Solver::getTotalServiceTime()
 {
   if (!solved) return false;
