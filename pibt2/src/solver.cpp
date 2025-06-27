@@ -18,6 +18,7 @@ MinimumSolver::MinimumSolver(Problem* _P)
 {
 }
 
+// 组织和管理整个求解过程的三个关键步骤，保证算法执行的完整性和流程性。
 void MinimumSolver::solve()
 {
   start();
