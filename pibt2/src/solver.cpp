@@ -566,6 +566,7 @@ MAPD_Solver::MAPD_Solver(MAPD_Instance* _P, bool _use_distance_table)
 
 MAPD_Solver::~MAPD_Solver() {}
 
+// 成前期必要的数据准备（如距离表的生成）以及整体求解流程的调度。
 void MAPD_Solver::solve()
 {
   // create distance table
