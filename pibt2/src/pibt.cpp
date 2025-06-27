@@ -22,7 +22,8 @@ void PIBT::run()
     if (a->init_d != b->init_d) return a->init_d > b->init_d;
     return a->tie_breaker > b->tie_breaker; // 随机值作为打破平手的最后手段。
   };
-  Agents A;
+
+  Agents A; // 用于存储全部Agent指针
 
   // initialize
   for (int i = 0; i < P->getNum(); ++i) {
