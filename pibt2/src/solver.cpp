@@ -627,6 +627,7 @@ float MAPD_Solver::getTotalServiceTime()
   });
 }
 
+// 计算所有已完成任务的平均服务时间，也就是每个任务从出现到被完成所经历的平均时间。
 float MAPD_Solver::getAverageServiceTime()
 {
   return getTotalServiceTime() / P->getClosedTasks().size();
