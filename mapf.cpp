@@ -121,22 +121,33 @@ std::unique_ptr<MAPF_Solver> getSolver(const std::string solver_name,
                                        char* argv[])
 {
   std::unique_ptr<MAPF_Solver> solver;
-  if (solver_name == "PIBT") {
+  if (solver_name == "PIBT")
+  {
     solver = std::make_unique<PIBT>(P);
-  } else if (solver_name == "HCA") {
+  }
+  else if (solver_name == "HCA")
+  {
     solver = std::make_unique<HCA>(P);
-  } else if (solver_name == "PIBT_PLUS") {
+  }
+  else if (solver_name == "PIBT_PLUS")
+  {
     solver = std::make_unique<PIBT_PLUS>(P);
-  } else if (solver_name == "PushAndSwap") {
+  }
+  else if (solver_name == "PushAndSwap")
+  {
     solver = std::make_unique<PushAndSwap>(P);
-  } else {
+  }
+  else
+  {
     std::cout << "warn@mapf: "
               << "unknown solver name, " + solver_name + ", continue by PIBT"
               << std::endl;
     solver = std::make_unique<PIBT>(P);
   }
+
   solver->setParams(argc, argv);
   solver->setVerbose(verbose);
+  
   return solver;
 }
 
