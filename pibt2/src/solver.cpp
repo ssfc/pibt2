@@ -41,6 +41,7 @@ int MinimumSolver::getSolverElapsedTime() const
   return getElapsedTime(t_start);
 }
 
+// 计算并返回剩余可用的计算时间。
 int MinimumSolver::getRemainedTime() const
 {
   return std::max(0, max_comp_time - getSolverElapsedTime());
