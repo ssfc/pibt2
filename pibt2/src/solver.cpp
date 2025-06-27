@@ -522,6 +522,7 @@ void MAPF_Solver::clearPathTable(const Paths& paths)
   }
 }
 
+// 在不清空已有数据的情况下，将某个智能体的新路径增量地更新到全局时空占用表（PATH_TABLE）中。
 void MAPF_Solver::updatePathTableWithoutClear(const int id, const Path& p,
                                               const Paths& paths)
 {
