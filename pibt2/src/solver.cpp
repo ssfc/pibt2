@@ -654,6 +654,7 @@ void MAPD_Solver::makeLog(const std::string& logfile)
   log.close();
 }
 
+// 将求解器（MAPD_Solver）运行的基本信息输出到日志文件，以便后续分析或复现实验结果。
 void MAPD_Solver::makeLogBasicInfo(std::ofstream& log)
 {
   Grid* grid = reinterpret_cast<Grid*>(P->getG());
