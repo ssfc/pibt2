@@ -94,7 +94,8 @@ MAPF_Solver::~MAPF_Solver() {}
 void MAPF_Solver::exec()
 {
   // create distance table
-  if (distance_table_p == nullptr) {
+  if (distance_table_p == nullptr)
+  {
     info("  pre-processing, create distance table by BFS");
     createDistanceTable();
     preprocessing_comp_time = getSolverElapsedTime();
