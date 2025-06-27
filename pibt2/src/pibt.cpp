@@ -68,6 +68,8 @@ void PIBT::run()
       occupied_now[a->v_next->id] = a;
       // check goal condition
       check_goal_cond &= (a->v_next == a->g);
+
+      // 若到终点，重置；否则步数+1
       // update priority
       a->elapsed = (a->v_next == a->g) ? 0 : a->elapsed + 1;
       // reset params
