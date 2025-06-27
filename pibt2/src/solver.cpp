@@ -143,6 +143,7 @@ int MAPF_Solver::getLowerBoundMakespan()
   return LB_makespan;
 }
 
+// 将计划（Plan）格式的数据转换为路径（Paths）格式，便于后续处理和分析。
 // -------------------------------
 // utilities for solution representation
 Paths MAPF_Solver::planToPaths(const Plan& plan)
