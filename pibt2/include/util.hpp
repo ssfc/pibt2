@@ -49,6 +49,7 @@ static T randomChoose(const std::vector<T>& arr, std::mt19937* const MT)
   return arr[getRandomInt(0, arr.size() - 1, MT)];
 }
 
+// 计算从某一指定时间点 t_start 到当前时刻之间所经过的时间（以毫秒为单位）。
 // get elapsed time
 [[maybe_unused]] static double getElapsedTime(const Time::time_point& t_start)
 {
