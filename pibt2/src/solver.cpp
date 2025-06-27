@@ -401,6 +401,7 @@ Path MinimumSolver::getPathBySpaceTimeAstar(
   return path;
 }
 
+// 用于A*算法节点优先级比较的lambda表达式
 MinimumSolver::CompareAstarNode MinimumSolver::compareAstarNodeBasic =
     [](AstarNode* a, AstarNode* b) {
       if (a->f != b->f) return a->f > b->f;
