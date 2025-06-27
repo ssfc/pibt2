@@ -645,6 +645,7 @@ void MAPD_Solver::printResult()
             << std::setw(6) << getAverageServiceTime() << std::endl;
 }
 
+// 将求解器（MAPD_Solver）的运行结果和详细解路径输出到指定的日志文件。
 void MAPD_Solver::makeLog(const std::string& logfile)
 {
   std::ofstream log;
