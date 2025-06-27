@@ -62,6 +62,7 @@ void MinimumSolver::info() const
   if (verbose) std::cout << std::endl;
 }
 
+// 报告错误并中止程序执行。
 void MinimumSolver::halt(const std::string& msg) const
 {
   std::cout << "error@" << solver_name << ": " << msg << std::endl;
