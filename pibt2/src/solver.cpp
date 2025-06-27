@@ -178,6 +178,7 @@ Plan MAPF_Solver::pathsToPlan(const Paths& paths)
   return plan;
 }
 
+// 将一个字符串参数列表（通常用于命令行参数）传递并设置到指定的 MAPF 求解器（solver）实例中，便于通过参数灵活配置求解器的行为。
 // -------------------------------
 // utilities for solver options
 // -------------------------------
