@@ -30,8 +30,6 @@ void PIBT::run()
 
   Agents A; // 用于存储全部Agent指针
 
-  cout << "agent num: " << A.size() << endl;
-
   // initialize
   for (int i = 0; i < P->getNum(); ++i) {
     Node* s = P->getStart(i); // 起点
@@ -49,6 +47,8 @@ void PIBT::run()
   }
   solution.add(P->getConfigStart());
 
+  cout << "agent num: " << A.size() << endl;
+  
   // main loop
   int timestep = 0;
   while (true) {
