@@ -52,7 +52,11 @@ void PIBT::run()
   // main loop
   int timestep = 0;
   while (true) {
-    info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
+
+    if(timestep % 10 == 0)
+    {
+      info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
+    }
 
     // planning
     std::sort(A.begin(), A.end(), compare); // 按优先级排序
