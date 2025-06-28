@@ -23,7 +23,7 @@ void MinimumSolver::solve()
 {
   start();
   exec();
-  end();
+  end(); // 在求解器（solver）运行结束时，记录并保存其总共消耗的计算时间（以毫秒为单位）。
 }
 
 // 该函数记录算法或求解器开始运行的时间点。
