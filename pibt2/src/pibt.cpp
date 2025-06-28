@@ -1,5 +1,10 @@
 #include "../include/pibt.hpp"
 
+#include <iostream>
+
+using namespace std;
+
+
 const std::string PIBT::SOLVER_NAME = "PIBT";
 
 // 初始化 PIBT 路径规划求解器实例。
@@ -24,6 +29,8 @@ void PIBT::run()
   };
 
   Agents A; // 用于存储全部Agent指针
+
+  cout << "agent num: " << A.size() << endl;
 
   // initialize
   for (int i = 0; i < P->getNum(); ++i) {
