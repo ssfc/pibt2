@@ -22,7 +22,7 @@ MinimumSolver::MinimumSolver(Problem* _P)
 void MinimumSolver::solve()
 {
   start(); // 该函数记录算法或求解器开始运行的时间点。
-  exec();
+  exec(); // 执行多智能体路径规划（MAPF）求解器的初始化和主流程。
   end(); // 在求解器（solver）运行结束时，记录并保存其总共消耗的计算时间（以毫秒为单位）。
 }
 
