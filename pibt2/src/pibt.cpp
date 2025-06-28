@@ -49,6 +49,7 @@ void PIBT::run()
   solution.add(P->getConfigStart());
 
   cout << "agent num: " << A.size() << endl;
+  cout << "agent 0 start: " << A[0]->v_now->pos.x << " " << A[0]->v_now->pos.y << endl;
 
   // main loop
   int timestep = 0;
