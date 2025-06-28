@@ -48,10 +48,11 @@ void PIBT::run()
   solution.add(P->getConfigStart());
 
   cout << "agent num: " << A.size() << endl;
-  
+
   // main loop
   int timestep = 0;
-  while (true) {
+  while (true)
+  {
 
     if(timestep % 10 == 0)
     {
