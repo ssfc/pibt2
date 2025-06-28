@@ -31,7 +31,8 @@ void PIBT::run()
   Agents A; // 用于存储全部Agent指针
 
   // initialize
-  for (int i = 0; i < P->getNum(); ++i) {
+  for (int i = 0; i < P->getNum(); ++i)
+  {
     Node* s = P->getStart(i); // 起点
     Node* g = P->getGoal(i); // 终点
     int d = disable_dist_init ? 0 : pathDist(i);
