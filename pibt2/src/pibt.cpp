@@ -61,7 +61,8 @@ void PIBT::run()
 
     // planning
     std::sort(A.begin(), A.end(), compare); // 按优先级排序
-    for (auto a : A) {
+    for (auto a : A)
+    {
       // if the agent has next location, then skip
       if (a->v_next == nullptr)
       {
