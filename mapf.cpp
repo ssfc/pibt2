@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
       case 'o':
         output_file = std::string(optarg);
         break;
-      case 's':
+      case 's': // s是solver name
         solver_name = std::string(optarg);
         break;
       case 'v':
