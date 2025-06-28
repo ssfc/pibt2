@@ -21,7 +21,7 @@ MinimumSolver::MinimumSolver(Problem* _P)
 // 组织和管理整个求解过程的三个关键步骤，保证算法执行的完整性和流程性。
 void MinimumSolver::solve()
 {
-  start();
+  start(); // 该函数记录算法或求解器开始运行的时间点。
   exec();
   end(); // 在求解器（solver）运行结束时，记录并保存其总共消耗的计算时间（以毫秒为单位）。
 }
