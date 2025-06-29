@@ -182,3 +182,7 @@ void printHelp()
 // mkdir build && cd build
 // cmake .. ; make
 // Run on ubuntu platform:
+// ./mapf -i ../instances/mapf/sample.txt -s PIBT -o result.txt -v
+// ./mapf --help
+// ./mapd -i ../instances/mapd/sample.txt -s PIBT -o result.txt -v
+// ./mapd --help
