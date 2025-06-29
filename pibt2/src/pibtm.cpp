@@ -56,12 +56,20 @@ void PIBTM::run()
   cout << "map num row: " << grid->getHeight() << endl;
   cout << "map num column: " << grid->getWidth() << endl;
   cout << "agent num: " << A.size() << endl;
+
+  /*
   cout << "agent 0 curr: " << A[0]->v_now->pos.x << " " << A[0]->v_now->pos.y << endl;
   cout << "agent 0 goal: " << A[0]->g->pos.x << " " << A[0]->g->pos.y << endl;
 
   int agent_0_direction_x = A[0]->g->pos.x - A[0]->v_now->pos.x;
   int agent_0_direction_y = A[0]->g->pos.y - A[0]->v_now->pos.y;
   cout << "agent 0 vector: " << agent_0_direction_x << " " << agent_0_direction_y << endl;
+   */
+
+  
+
+
+
 
   // main loop
   int timestep = 0;
