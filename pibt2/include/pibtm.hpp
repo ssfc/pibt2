@@ -13,6 +13,11 @@ public:
   static const std::string SOLVER_NAME;
 
 private:
+
+  struct Point {
+    int x, y;
+  };
+
   // PIBT agent
   struct Agent {
     int id;
