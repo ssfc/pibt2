@@ -7,7 +7,7 @@
 
 #include "solver.hpp"
 
-class PIBT : public MAPF_Solver
+class PIBTM : public MAPF_Solver
 {
 public:
   static const std::string SOLVER_NAME;
@@ -40,8 +40,8 @@ private:
   void run();
 
 public:
-  PIBT(MAPF_Instance* _P);
-  ~PIBT() {}
+  PIBTM(MAPF_Instance* _P);
+  ~PIBTM() {}
 
   void setParams(int argc, char* argv[]);
   static void printHelp();

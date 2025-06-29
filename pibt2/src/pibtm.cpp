@@ -2,25 +2,25 @@
 // Created by take_ on 25-6-29.
 //
 
-#include "../include/pibt.hpp"
+#include "../include/pibtm.hpp"
 
 #include <iostream>
 
 using namespace std;
 
 
-const std::string PIBT::SOLVER_NAME = "PIBT";
+const std::string PIBTM::SOLVER_NAME = "PIBTM";
 
 // 初始化 PIBT 路径规划求解器实例。
-PIBT::PIBT(MAPF_Instance* _P)
+PIBTM::PIBTM(MAPF_Instance* _P)
     : MAPF_Solver(_P),
       occupied_now(Agents(G->getNodesSize(), nullptr)),
       occupied_next(Agents(G->getNodesSize(), nullptr))
 {
-  solver_name = PIBT::SOLVER_NAME;
+  solver_name = PIBTM::SOLVER_NAME;
 }
 
-void PIBT::run()
+void PIBTM::run()
 {
   // compare priority of agents
   auto compare = [](Agent* a, const Agent* b) {
@@ -129,7 +129,7 @@ void PIBT::run()
 }
 
 // 为单个智能体（ai）在下一步寻找一个合适的位置，尽可能避免与其它智能体冲突，同时能处理优先级冲突与递归回溯。
-bool PIBT::funcPIBT(Agent* ai, Agent* aj)
+bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
 {
   // compare two nodes
   auto compare = [&](Node* const v, Node* const u) {
@@ -176,7 +176,7 @@ bool PIBT::funcPIBT(Agent* ai, Agent* aj)
 }
 
 // 根据命令行参数设置 PIBT 算法的内部参数。
-void PIBT::setParams(int argc, char* argv[])
+void PIBTM::setParams(int argc, char* argv[])
 {
   struct option longopts[] = {
       {"disable-dist-init", no_argument, 0, 'd'},
@@ -196,9 +196,9 @@ void PIBT::setParams(int argc, char* argv[])
 }
 
 // 在命令行输出PIBT算法的帮助信息，主要用于指导用户如何使用可用的命令行参数。
-void PIBT::printHelp()
+void PIBTM::printHelp()
 {
-  std::cout << PIBT::SOLVER_NAME << "\n"
+  std::cout << PIBTM::SOLVER_NAME << "\n"
             << "  -d --disable-dist-init"
             << "        "
             << "disable initialization of priorities "
