@@ -173,3 +173,8 @@ void printHelp()
   PIBT_PLUS::printHelp();
   PushAndSwap::printHelp();
 }
+
+
+// Run on windows platform:
+// 一些变量与windows表示相冲突, 暂时不在windows运行
+
