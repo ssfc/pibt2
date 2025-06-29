@@ -4,6 +4,7 @@
 #include <hca.hpp>
 #include <iostream>
 #include <pibt.hpp>
+#include <pibtm.hpp>
 #include <pibt_plus.hpp>
 #include <problem.hpp>
 #include <push_and_swap.hpp>
