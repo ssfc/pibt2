@@ -53,7 +53,8 @@ void PIBTM::run()
   solution.add(P->getConfigStart());
 
   Grid* grid = reinterpret_cast<Grid*>(G);
-  cout << "map num row: " << grid->getWidth() << endl;
+  cout << "map num row: " << grid->getHeight() << endl;
+  cout << "map num column: " << grid->getWidth() << endl;
   cout << "agent num: " << A.size() << endl;
   cout << "agent 0 start: " << A[0]->v_now->pos.x << " " << A[0]->v_now->pos.y << endl;
 
