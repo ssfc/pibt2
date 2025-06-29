@@ -66,9 +66,19 @@ void PIBTM::run()
   cout << "agent 0 vector: " << agent_0_direction_x << " " << agent_0_direction_y << endl;
    */
 
-  
+  // 把所有向量累加起来
+  int total_direction_x = 0;
+  int total_direction_y = 0;
+  for (int i = 0; i < P->getNum(); ++i)
+  {
+    int agent_i_direction_x = A[i]->g->pos.x - A[i]->v_now->pos.x;
+    int agent_i_direction_y = A[i]->g->pos.y - A[i]->v_now->pos.y;
 
+    total_direction_x += agent_i_direction_x;
+    total_direction_y += agent_i_direction_y;
+  }
 
+  cout << "total direction: " << total_direction_x << " " << total_direction_y << endl;
 
 
   // main loop
