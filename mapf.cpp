@@ -178,3 +178,7 @@ void printHelp()
 // Run on windows platform:
 // 一些变量与windows表示相冲突, 暂时不在windows运行
 
+// Compile on ubuntu platform:
+// mkdir build && cd build
+// cmake .. ; make
+// Run on ubuntu platform:
