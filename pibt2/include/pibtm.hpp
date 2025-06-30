@@ -14,7 +14,7 @@ public:
 
 private:
 
-  struct Point {
+  struct Direction {
     int x, y;
   };
 
