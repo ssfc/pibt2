@@ -448,6 +448,7 @@ MAPD_Instance::~MAPD_Instance()
   for (auto task : TASKS_CLOSED) delete task;
 }
 
+// 从地图的扩展配置文件（一般为 .pd 文件）中读取节点类型并初始化任务点配置
 void MAPD_Instance::setupSpetialNodes()
 {
   Grid* grid = reinterpret_cast<Grid*>(G);
