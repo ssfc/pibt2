@@ -305,6 +305,7 @@ void MAPF_Instance::makeScenFile(const std::string& output_file)
   log.close();
 }
 
+// 根据配置文件内容初始化多智能体动态任务分配（MAPD）问题实例，包括环境（地图）、智能体数量、任务参数、起点选择等，自动处理缺省参数、支持随机补全起点、以及特殊任务相关位置的灵活设定，保证所有参数和数据结构初始化正确合法，适用于后续算法流程。
 // -------------------------------------------
 // MAPD
 MAPD_Instance::MAPD_Instance(const std::string& _instance)
