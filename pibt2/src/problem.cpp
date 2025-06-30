@@ -441,6 +441,7 @@ MAPD_Instance::MAPD_Instance(const std::string& _instance)
   update();
 }
 
+// 负责释放动态分配到堆上的任务对象内存，防止内存泄漏
 MAPD_Instance::~MAPD_Instance()
 {
   for (auto task : TASKS_OPEN) delete task;
