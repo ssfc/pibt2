@@ -183,6 +183,7 @@ MAPF_Instance::MAPF_Instance(MAPF_Instance* P, int _max_comp_time)
 {
 }
 
+// 在MAPF_Instance对象被销毁时，安全地释放其内部动态分配的内存资源，防止内存泄漏。
 MAPF_Instance::~MAPF_Instance()
 {
   if (instance_initialized) {
