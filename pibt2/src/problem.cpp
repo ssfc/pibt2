@@ -192,6 +192,7 @@ MAPF_Instance::~MAPF_Instance()
   }
 }
 
+// 为多智能体路径规划问题随机生成每个智能体的起点和终点配置。
 void MAPF_Instance::setRandomStartsGoals()
 {
   // initialize
