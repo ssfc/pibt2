@@ -174,6 +174,7 @@ MAPF_Instance::MAPF_Instance(MAPF_Instance* P, Config _config_s,
 {
 }
 
+// MAPF_Instance 类的拷贝构造器（带部分自定义参数），其主要功能是用一个已存在的 MAPF_Instance 对象 P 来初始化新的 MAPF_Instance 实例，并允许最大计算时间（_max_comp_time）参数自定义。
 MAPF_Instance::MAPF_Instance(MAPF_Instance* P, int _max_comp_time)
     : Problem(P->getInstanceFileName(), P->getG(), P->getMT(),
               P->getConfigStart(), P->getConfigGoal(), P->getNum(),
