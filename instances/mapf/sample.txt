@@ -7,7 +7,7 @@ agents=150
 
 ## ==== custom =======
 ## seed of randomization
-seed=1
+seed=2
 
 ## true  -> random starts/goals
 ## false -> use custom starts/goals
