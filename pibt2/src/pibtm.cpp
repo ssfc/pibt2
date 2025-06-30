@@ -4,6 +4,7 @@
 
 #include "../include/pibtm.hpp"
 
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -76,7 +77,15 @@ void PIBTM::run()
   {
     A[i]->mainstream_inner_product = A[i]->agent_direction_x * mainstream_x +
                                      A[i]->agent_direction_y * mainstream_y;
+    A[i]->mainstream_cos = (A[i]->agent_direction_x * mainstream_x +
+                            A[i]->agent_direction_y * mainstream_y) /
+                           (sqrt(A[i]->agent_direction_x * A[i]->agent_direction_x +
+                                 A[i]->agent_direction_y * A[i]->agent_direction_y) *
+                           sqrt(mainstream_x * mainstream_x +
+                                mainstream_y * mainstream_y));
   }
+
+  cout << "A[0] cos: " << A[0]->mainstream_cos << endl;
 
   // compare priority of agents
   auto compare = [mainstream_x, mainstream_y]
@@ -192,6 +201,13 @@ void PIBTM::run()
       {
         A[i]->mainstream_inner_product = A[i]->agent_direction_x * mainstream_x +
                                          A[i]->agent_direction_y * mainstream_y;
+
+        A[i]->mainstream_cos = (A[i]->agent_direction_x * mainstream_x +
+                                A[i]->agent_direction_y * mainstream_y) /
+                               (sqrt(A[i]->agent_direction_x * A[i]->agent_direction_x +
+                                     A[i]->agent_direction_y * A[i]->agent_direction_y) *
+                                sqrt(mainstream_x * mainstream_x +
+                                     mainstream_y * mainstream_y));
       }
     }
 

@@ -32,6 +32,7 @@ private:
     int agent_direction_y; // agent起点到终点的向量x投影
 
     int mainstream_inner_product; // the inner product between start-goal and mainstream vector
+    double mainstream_cos; // the cosine angle between start-goal and mainstream vector
   };
   using Agents = std::vector<Agent*>;
 
