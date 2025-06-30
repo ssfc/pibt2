@@ -34,6 +34,7 @@ static bool inArray(const T a, const std::vector<T>& arr)
   return r(*MT);
 }
 
+// 生成一个在指定范围内的随机浮点数（float）
 // return [from, to)
 [[maybe_unused]] static float getRandomFloat(float from, float to,
                                              std::mt19937* const MT)
