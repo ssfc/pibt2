@@ -72,7 +72,8 @@ void PIBTM::run()
   cout << "mainstream direction: " << mainstream_x << " " << mainstream_y << endl;
 
   // compare priority of agents
-  auto compare = [](Agent* a, const Agent* b) {
+  auto compare = [mainstream_x, mainstream_y]
+      (Agent* a, const Agent* b) {
     // 优先比较: 已耗时越多，优先级越高（先被决策）。
     if (a->elapsed != b->elapsed)
     {
