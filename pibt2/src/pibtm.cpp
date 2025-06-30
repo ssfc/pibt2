@@ -80,7 +80,8 @@ void PIBTM::run()
 
   // compare priority of agents
   auto compare = [mainstream_x, mainstream_y]
-      (const Agent* a, const Agent* b) {
+      (const Agent* a, const Agent* b)
+  {
     // 优先比较: 已耗时越多，优先级越高（先被决策）。
     if (a->elapsed != b->elapsed)
     {
