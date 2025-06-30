@@ -18,8 +18,8 @@ private:
     int x, y;
   };
 
-  int small_region_column = 12; // (errand点)(小)每个region所占的列数
-  int small_region_row = 12; // (errand点)(小)每个region所占的行数
+  int small_region_column = 25; // (errand点)(小)每个region所占的列数
+  int small_region_row = 25; // (errand点)(小)每个region所占的行数
   // (历史统计)地图有几列small region
   int num_small_region_column;
   // (历史统计)地图有几行small region

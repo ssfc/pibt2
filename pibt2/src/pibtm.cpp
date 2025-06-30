@@ -87,6 +87,18 @@ void PIBTM::run()
 
   cout << "A[0] cos: " << A[0]->mainstream_cos << endl;
 
+  // 地图有几列region
+  num_small_region_column = std::ceil((double)grid->getWidth() / small_region_column);
+  // 地图有几行region
+  num_small_region_row = std::ceil((double)grid->getHeight() / small_region_row);
+
+  cout << "num small region column: " << num_small_region_column << endl;
+  cout << "num small region row: " << num_small_region_row << endl;
+
+
+
+
+
   // compare priority of agents
   auto compare = [mainstream_x, mainstream_y]
       (const Agent* a, const Agent* b)
@@ -178,7 +190,7 @@ void PIBTM::run()
   while (true)
   {
 
-    if(timestep % 20 == 0)
+    if(timestep % 50 == 0)
     {
       info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
 
