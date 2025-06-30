@@ -9,6 +9,7 @@
 using Config = std::vector<Node*>;  // < loc_0[t], loc_1[t], ... >
 using Configs = std::vector<Config>;
 
+// 判断两个配置（config_i 和 config_j）是否完全相同。
 // check two configurations are same or not
 [[maybe_unused]] static bool sameConfig(const Config& config_i,
                                         const Config& config_j)
