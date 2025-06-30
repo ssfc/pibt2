@@ -286,6 +286,7 @@ void MAPF_Instance::setWellFormedInstance()
   }
 }
 
+// 生成并保存多智能体路径规划（MAPF）问题的场景文件。
 void MAPF_Instance::makeScenFile(const std::string& output_file)
 {
   Grid* grid = reinterpret_cast<Grid*>(G);
