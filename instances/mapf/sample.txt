@@ -3,7 +3,7 @@
 map_file=arena.map
 
 ## number of agents
-agents=150
+agents=100
 
 ## ==== custom =======
 ## seed of randomization
