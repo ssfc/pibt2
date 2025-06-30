@@ -26,6 +26,7 @@ Node* Problem::getStart(int i) const
   return config_s[i];
 }
 
+// 获取第 i 个智能体的目标节点。
 Node* Problem::getGoal(int i) const
 {
   if (!(0 <= i && i < (int)config_g.size())) halt("invalid index");
