@@ -141,7 +141,7 @@ void PIBTM::run()
   while (true)
   {
 
-    if(timestep % 50 == 0)
+    if(timestep % 20 == 0)
     {
       info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
 
@@ -168,8 +168,8 @@ void PIBTM::run()
     }
 
     // planning
-    // std::sort(A.begin(), A.end(), compare); // 按优先级排序
-    std::sort(A.begin(), A.end(), compare_addition); // 按优先级排序
+    std::sort(A.begin(), A.end(), compare); // 按优先级排序
+    // std::sort(A.begin(), A.end(), compare_addition); // 按优先级排序
     for (auto a : A)
     {
       // if the agent has next location, then skip
