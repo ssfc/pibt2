@@ -151,9 +151,9 @@ void PIBTM::run()
   {
     // 次级比较: 初始距离越远，优先级越高。
     // use initial distance
-    if (a->mainstream_inner_product != b->mainstream_inner_product)
+    if (a->mainstream_cos != b->mainstream_cos)
     {
-      return a->mainstream_inner_product > b->mainstream_inner_product;
+      return a->mainstream_cos > b->mainstream_cos;
     }
 
     // 优先比较: 已耗时越多，优先级越高（先被决策）。
@@ -178,7 +178,7 @@ void PIBTM::run()
   while (true)
   {
 
-    if(timestep % 20 == 0)
+    if(timestep % 50 == 0)
     {
       info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
 
@@ -194,7 +194,7 @@ void PIBTM::run()
         mainstream_y += A[i]->agent_direction_y;
       }
 
-      cout << "mainstream direction: " << mainstream_x << " " << mainstream_y << endl;
+      // cout << "mainstream direction: " << mainstream_x << " " << mainstream_y << endl;
 
       // 计算所有agent向量和mainstream向量的内积
       for (int i = 0; i < P->getNum(); ++i)
