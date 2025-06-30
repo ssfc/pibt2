@@ -47,9 +47,9 @@ void Problem::warn(const std::string& msg) const
   std::cout << "warn@Problem: " << msg << std::endl;
 }
 
+// 根据一个实例文件（通常是多智能体路径规划的环境与请求配置）来初始化问题实例。
 // -------------------------------------------
 // MAPF
-
 MAPF_Instance::MAPF_Instance(const std::string& _instance)
     : Problem(_instance), instance_initialized(true)
 {
