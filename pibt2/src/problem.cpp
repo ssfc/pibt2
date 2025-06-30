@@ -19,6 +19,7 @@ Problem::Problem(std::string _instance, Graph* _G, std::mt19937* _MT,
       max_timestep(_max_timestep),
       max_comp_time(_max_comp_time){};
 
+// 获取第 i 个智能体的起始节点。
 Node* Problem::getStart(int i) const
 {
   if (!(0 <= i && i < (int)config_s.size())) halt("invalid index");
