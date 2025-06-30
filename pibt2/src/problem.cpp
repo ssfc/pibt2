@@ -241,6 +241,7 @@ void MAPF_Instance::setRandomStartsGoals()
   }
 }
 
+// 为多智能体路径规划（MAPF）问题自动生成一组起点和终点，且保证这组起点终点是“well-formed”的，即每对起终点之间存在路径，且在分配过程中不会发生节点冲突，适用于路径规划实验或数据集构造。
 /*
  * Note: it is hard to generate well-formed instances
  * with dense situations (e.g., ≥300 agents in arena)
