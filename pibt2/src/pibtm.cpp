@@ -136,12 +136,40 @@ void PIBTM::run()
     return a->tie_breaker > b->tie_breaker; // 随机值作为打破平手的最后手段。
   };
 
+  // compare priority of agents
+  auto compare_angle = [mainstream_x, mainstream_y]
+      (const Agent* a, const Agent* b)
+  {
+    // 次级比较: 初始距离越远，优先级越高。
+    // use initial distance
+    if (a->mainstream_inner_product != b->mainstream_inner_product)
+    {
+      return a->mainstream_inner_product > b->mainstream_inner_product;
+    }
+
+    // 优先比较: 已耗时越多，优先级越高（先被决策）。
+    if (a->elapsed != b->elapsed)
+    {
+      return a->elapsed > b->elapsed;
+    }
+
+    // 次级比较: 初始距离越远，优先级越高。
+    // use initial distance
+    if (a->init_d != b->init_d)
+    {
+      return a->init_d > b->init_d;
+    }
+
+    // 最后比较: 0-1随机数
+    return a->tie_breaker > b->tie_breaker; // 随机值作为打破平手的最后手段。
+  };
+
   // main loop
   int timestep = 0;
   while (true)
   {
 
-    if(timestep % 10 == 0)
+    if(timestep % 20 == 0)
     {
       info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
 
@@ -168,7 +196,8 @@ void PIBTM::run()
     }
 
     // planning
-    std::sort(A.begin(), A.end(), compare); // 按优先级排序
+    // std::sort(A.begin(), A.end(), compare); // 按优先级排序
+    std::sort(A.begin(), A.end(), compare_angle); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_addition); // 按优先级排序
     for (auto a : A)
     {
