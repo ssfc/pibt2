@@ -57,19 +57,26 @@ void PIBTM::run()
   cout << "agent 0 vector: " << agent_0_direction_x << " " << agent_0_direction_y << endl;
    */
 
-  // 把所有向量累加起来
+  // 计算mainstream: 把所有向量累加起来
   int mainstream_x = 0;
   int mainstream_y = 0;
   for (int i = 0; i < P->getNum(); ++i)
   {
-    int agent_i_direction_x = A[i]->g->pos.x - A[i]->v_now->pos.x;
-    int agent_i_direction_y = A[i]->g->pos.y - A[i]->v_now->pos.y;
+    A[i]->agent_direction_x = A[i]->g->pos.x - A[i]->v_now->pos.x;
+    A[i]->agent_direction_y = A[i]->g->pos.y - A[i]->v_now->pos.y;
 
-    mainstream_x += agent_i_direction_x;
-    mainstream_y += agent_i_direction_y;
+    mainstream_x += A[i]->agent_direction_x;
+    mainstream_y += A[i]->agent_direction_y;
   }
 
   cout << "mainstream direction: " << mainstream_x << " " << mainstream_y << endl;
+
+  // 计算所有agent向量和mainstream向量的夹角
+  for (int i = 0; i < P->getNum(); ++i)
+  {
+    A[i]->mainstream_inner_product = A[i]->agent_direction_x * mainstream_x +
+                                     A[i]->agent_direction_y * mainstream_y;
+  }
 
   // compare priority of agents
   auto compare = [mainstream_x, mainstream_y]
@@ -78,6 +85,13 @@ void PIBTM::run()
     if (a->elapsed != b->elapsed)
     {
       return a->elapsed > b->elapsed;
+    }
+
+    // 次级比较: 初始距离越远，优先级越高。
+    // use initial distance
+    if (a->mainstream_inner_product != b->mainstream_inner_product)
+    {
+      return a->mainstream_inner_product > b->mainstream_inner_product;
     }
 
     // 次级比较: 初始距离越远，优先级越高。
