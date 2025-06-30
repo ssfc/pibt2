@@ -110,12 +110,12 @@ void PIBTM::run()
   auto compare_addition = [mainstream_x, mainstream_y]
       (const Agent* a, const Agent* b)
   {
-    // 次级比较: 初始距离越远，优先级越高。
+    // 次级比较: 内积与时间之和越大，优先级越高。
     // use initial distance
     //*
-    if (a->mainstream_inner_product != b->mainstream_inner_product)
+    if (a->mainstream_inner_product + a->elapsed != b->mainstream_inner_product + b->elapsed)
     {
-      return a->mainstream_inner_product > b->mainstream_inner_product;
+      return a->mainstream_inner_product + a->elapsed > b->mainstream_inner_product + b->elapsed;
     }
     //*/
 
