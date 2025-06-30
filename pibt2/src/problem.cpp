@@ -33,6 +33,7 @@ Node* Problem::getGoal(int i) const
   return config_g[i];
 }
 
+// 在Problem类中发生严重错误时，输出错误信息并终止程序。
 void Problem::halt(const std::string& msg) const
 {
   std::cout << "error@Problem: " << msg << std::endl;
