@@ -5,6 +5,8 @@
 
 #include "../include/util.hpp"
 
+
+// Problem 类的构造函数，用于初始化一个多智能体路径规划问题实例。
 Problem::Problem(std::string _instance, Graph* _G, std::mt19937* _MT,
                  Config _config_s, Config _config_g, int _num_agents,
                  int _max_timestep, int _max_comp_time)
