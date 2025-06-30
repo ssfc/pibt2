@@ -41,6 +41,7 @@ void Problem::halt(const std::string& msg) const
   std::exit(1);
 }
 
+// 在控制台输出一条警告信息，用于提醒用户有一些非致命的问题或异常情况发生。
 void Problem::warn(const std::string& msg) const
 {
   std::cout << "warn@Problem: " << msg << std::endl;
