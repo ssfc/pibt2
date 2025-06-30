@@ -111,7 +111,7 @@ void PIBTM::run()
   while (true)
   {
 
-    if(timestep % 50 == 0)
+    if(timestep % 100 == 0)
     {
       info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
 
