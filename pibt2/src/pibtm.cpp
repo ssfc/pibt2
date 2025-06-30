@@ -112,10 +112,12 @@ void PIBTM::run()
   {
     // 次级比较: 初始距离越远，优先级越高。
     // use initial distance
+    /*
     if (a->mainstream_inner_product != b->mainstream_inner_product)
     {
       return a->mainstream_inner_product > b->mainstream_inner_product;
     }
+     */
 
     // 优先比较: 已耗时越多，优先级越高（先被决策）。
     if (a->elapsed != b->elapsed)
