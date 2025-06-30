@@ -14,7 +14,7 @@ seed=2
 random_problem=1
 
 ## timestep limit
-max_timestep=1000
+max_timestep=2000
 
 ## computation time limit, ms
 max_comp_time=5000
