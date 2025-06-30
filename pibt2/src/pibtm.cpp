@@ -71,7 +71,7 @@ void PIBTM::run()
 
   cout << "mainstream direction: " << mainstream_x << " " << mainstream_y << endl;
 
-  // 计算所有agent向量和mainstream向量的夹角
+  // 计算所有agent向量和mainstream向量的内积
   for (int i = 0; i < P->getNum(); ++i)
   {
     A[i]->mainstream_inner_product = A[i]->agent_direction_x * mainstream_x +
@@ -111,9 +111,30 @@ void PIBTM::run()
   while (true)
   {
 
-    if(timestep % 10 == 0)
+    if(timestep % 50 == 0)
     {
       info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
+
+      // 刷新mainstream: 把所有向量累加起来
+      mainstream_x = 0;
+      mainstream_y = 0;
+      for (int i = 0; i < P->getNum(); ++i)
+      {
+        A[i]->agent_direction_x = A[i]->g->pos.x - A[i]->v_now->pos.x;
+        A[i]->agent_direction_y = A[i]->g->pos.y - A[i]->v_now->pos.y;
+
+        mainstream_x += A[i]->agent_direction_x;
+        mainstream_y += A[i]->agent_direction_y;
+      }
+
+      cout << "mainstream direction: " << mainstream_x << " " << mainstream_y << endl;
+
+      // 计算所有agent向量和mainstream向量的内积
+      for (int i = 0; i < P->getNum(); ++i)
+      {
+        A[i]->mainstream_inner_product = A[i]->agent_direction_x * mainstream_x +
+                                         A[i]->agent_direction_y * mainstream_y;
+      }
     }
 
     // planning
