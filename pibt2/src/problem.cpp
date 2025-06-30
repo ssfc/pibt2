@@ -164,6 +164,7 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
   config_g.resize(num_agents);
 }
 
+// 通过已有的 MAPF_Instance 实例 P 以及新的配置参数，来创建一个新的 MAPF_Instance 对象。
 MAPF_Instance::MAPF_Instance(MAPF_Instance* P, Config _config_s,
                              Config _config_g, int _max_comp_time,
                              int _max_timestep)
