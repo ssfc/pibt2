@@ -22,6 +22,7 @@ using Configs = std::vector<Config>;
   return true;
 }
 
+// 计算一条路径的代价（cost）
 [[maybe_unused]] static int getPathCost(const Path& path)
 {
   int cost = path.size() - 1;
