@@ -282,7 +282,7 @@ void PIBTM::run()
         region_mainstreams[agent_region].y += A[i]->agent_direction_y;
       }
 
-      //*
+      /*
       cout << "region agent num: ";
       for(int i : region_agent_num)
       {
@@ -291,7 +291,7 @@ void PIBTM::run()
       cout << endl;
         //*/
 
-      //*
+      /*
       cout << "region mainstreams: ";
       for(auto i : region_mainstreams)
       {
