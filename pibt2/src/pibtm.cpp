@@ -267,7 +267,7 @@ void PIBTM::run()
       std::fill(region_agent_num.begin(), region_agent_num.end(), 0);
       // 区域里的主流
       std::fill(region_mainstreams.begin(), region_mainstreams.end(), Direction{0,0});
-      cout << "region num: " << region_mainstreams.size() << endl;
+      // cout << "region num: " << region_mainstreams.size() << endl;
 
       // 计算region mainstream: 把区域内所有向量累加起来
       for(int i = 0; i < P->getNum(); i++)
@@ -299,6 +299,16 @@ void PIBTM::run()
       }
       cout << endl;
        //*/
+
+      for (int i = 0; i < P->getNum(); ++i)
+      {
+        A[i]->region_mainstream_inner_product =
+            A[i]->agent_direction_x * region_mainstreams[A[i]->agent_region].x +
+            A[i]->agent_direction_y * region_mainstreams[A[i]->agent_region].y;
+      }
+
+      cout << "A[0] region mainstream inner product: " << A[0]->region_mainstream_inner_product << endl;
+      
     }
 
     // planning
