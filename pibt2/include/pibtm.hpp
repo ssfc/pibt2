@@ -15,7 +15,8 @@ public:
 private:
 
   struct Direction {
-    int x, y;
+    int x = 0;
+    int y = 0;
   };
 
   int small_region_column = 25; // (errand点)(小)每个region所占的列数
