@@ -95,8 +95,8 @@ void PIBTM::run()
   cout << "num small region column: " << num_small_region_column << endl;
   cout << "num small region row: " << num_small_region_row << endl;
 
-
-
+  vector<Direction> region_mainstreams(num_small_region_row * num_small_region_column); // 区域里的主流
+  cout << "region num: " << region_mainstreams.size() << endl;
 
 
   // compare priority of agents
