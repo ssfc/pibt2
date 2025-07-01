@@ -95,9 +95,31 @@ void PIBTM::run()
   cout << "num small region column: " << num_small_region_column << endl;
   cout << "num small region row: " << num_small_region_row << endl;
 
+  // 将map分为若干区域, 统计每个区域agent的数量
+  vector<int> region_agent_num(num_small_region_column * num_small_region_row, 0);
   vector<Direction> region_mainstreams(num_small_region_row * num_small_region_column); // 区域里的主流
   cout << "region num: " << region_mainstreams.size() << endl;
 
+  // 计算区域mainstream: 把区域内所有向量累加起来
+  for(int i = 0; i < P->getNum(); i++)
+  {
+    int agent_region_x = A[i]->g->pos.x / small_region_column;
+    int agent_region_y = A[i]->g->pos.y / small_region_row;
+    int agent_region = agent_region_y * num_small_region_column + agent_region_x;
+
+    region_agent_num[agent_region]++;
+    region_mainstreams[agent_region].x += A[i]->agent_direction_x;
+    region_mainstreams[agent_region].y += A[i]->agent_direction_y;
+  }
+
+  //*
+    cout << "region agent num: ";
+    for(int i : region_agent_num)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+     //*/
 
   // compare priority of agents
   auto compare = [mainstream_x, mainstream_y]
