@@ -45,6 +45,7 @@ private:
 
     int agent_region; // agent所属的region
     int region_mainstream_inner_product; // the inner product between start-goal and region mainstream vector
+    double region_mainstream_cos; // the cosine angle between start-goal and region mainstream vector
   };
   using Agents = std::vector<Agent*>;
 

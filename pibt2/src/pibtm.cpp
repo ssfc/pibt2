@@ -136,6 +136,13 @@ void PIBTM::run()
     A[i]->region_mainstream_inner_product =
         A[i]->agent_direction_x * region_mainstreams[A[i]->agent_region].x +
            A[i]->agent_direction_y * region_mainstreams[A[i]->agent_region].y;
+
+    A[i]->mainstream_cos = (A[i]->agent_direction_x * mainstream_x +
+                            A[i]->agent_direction_y * mainstream_y) /
+                           (sqrt(A[i]->agent_direction_x * A[i]->agent_direction_x +
+                                 A[i]->agent_direction_y * A[i]->agent_direction_y) *
+                            sqrt(mainstream_x * mainstream_x +
+                                 mainstream_y * mainstream_y));
   }
 
   cout << "A[0] region mainstream inner product: " << A[0]->region_mainstream_inner_product << endl;
@@ -228,6 +235,33 @@ void PIBTM::run()
 
   // compare priority of agents
   auto compare_region_inner = []
+      (const Agent* a, const Agent* b)
+  {
+    // 次级比较: 越符合区域主流，优先级越高。
+    // use initial distance
+    if (a->region_mainstream_inner_product != b->region_mainstream_inner_product)
+    {
+      return a->region_mainstream_inner_product > b->region_mainstream_inner_product;
+    }
+
+    // 优先比较: 已耗时越多，优先级越高（先被决策）。
+    if (a->elapsed != b->elapsed)
+    {
+      return a->elapsed > b->elapsed;
+    }
+
+    // 次级比较: 初始距离越远，优先级越高。
+    // use initial distance
+    if (a->init_d != b->init_d)
+    {
+      return a->init_d > b->init_d;
+    }
+
+    // 最后比较: 0-1随机数
+    return a->tie_breaker > b->tie_breaker; // 随机值作为打破平手的最后手段。
+  };
+
+  auto compare_region_cos = []
       (const Agent* a, const Agent* b)
   {
     // 次级比较: 越符合区域主流，优先级越高。
