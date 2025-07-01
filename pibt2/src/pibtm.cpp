@@ -137,12 +137,12 @@ void PIBTM::run()
         A[i]->agent_direction_x * region_mainstreams[A[i]->agent_region].x +
            A[i]->agent_direction_y * region_mainstreams[A[i]->agent_region].y;
 
-    A[i]->mainstream_cos = (A[i]->agent_direction_x * mainstream_x +
-                            A[i]->agent_direction_y * mainstream_y) /
+    A[i]->region_mainstream_cos = (A[i]->agent_direction_x * region_mainstreams[A[i]->agent_region].x +
+                                   A[i]->agent_direction_y * region_mainstreams[A[i]->agent_region].y) /
                            (sqrt(A[i]->agent_direction_x * A[i]->agent_direction_x +
                                  A[i]->agent_direction_y * A[i]->agent_direction_y) *
-                            sqrt(mainstream_x * mainstream_x +
-                                 mainstream_y * mainstream_y));
+                            sqrt(region_mainstreams[A[i]->agent_region].x * region_mainstreams[A[i]->agent_region].x +
+                                  region_mainstreams[A[i]->agent_region].y * region_mainstreams[A[i]->agent_region].y));
   }
 
   cout << "A[0] region mainstream inner product: " << A[0]->region_mainstream_inner_product << endl;
