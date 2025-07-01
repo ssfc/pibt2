@@ -169,7 +169,7 @@ void PIBTM::run()
   };
 
   // compare priority of agents: inner production + timestep
-  auto compare_addition = [mainstream_x, mainstream_y]
+  auto compare_addition = []
       (const Agent* a, const Agent* b)
   {
     // 次级比较: 内积与时间之和越大，优先级越高。
