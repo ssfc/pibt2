@@ -112,14 +112,14 @@ void PIBTM::run()
     region_mainstreams[agent_region].y += A[i]->agent_direction_y;
   }
 
-  //*
+  /*
     cout << "region agent num: ";
     for(int i : region_agent_num)
     {
         cout << i << " ";
     }
     cout << endl;
-     //*/
+  //*/
 
   // compare priority of agents
   auto compare = [mainstream_x, mainstream_y]
