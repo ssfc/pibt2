@@ -141,7 +141,7 @@ void PIBTM::run()
   cout << "A[0] region mainstream inner product: " << A[0]->region_mainstream_inner_product << endl;
 
   // compare priority of agents
-  auto compare = [mainstream_x, mainstream_y]
+  auto compare = []
       (const Agent* a, const Agent* b)
   {
     // 次级比较: 初始距离越远，优先级越高。
