@@ -121,6 +121,13 @@ void PIBTM::run()
     cout << endl;
   //*/
 
+  cout << "region mainstreams: ";
+  for(auto i : region_mainstreams)
+  {
+    cout << i.x << " " << i.y << " ";
+  }
+  cout << endl;
+
   // compare priority of agents
   auto compare = [mainstream_x, mainstream_y]
       (const Agent* a, const Agent* b)
