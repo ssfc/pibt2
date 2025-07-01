@@ -266,9 +266,9 @@ void PIBTM::run()
   {
     // 次级比较: 越符合区域主流，优先级越高。
     // use initial distance
-    if (a->region_mainstream_inner_product != b->region_mainstream_inner_product)
+    if (a->region_mainstream_cos != b->region_mainstream_cos)
     {
-      return a->region_mainstream_inner_product > b->region_mainstream_inner_product;
+      return a->region_mainstream_cos > b->region_mainstream_cos;
     }
 
     // 优先比较: 已耗时越多，优先级越高（先被决策）。
@@ -367,6 +367,13 @@ void PIBTM::run()
         A[i]->region_mainstream_inner_product =
             A[i]->agent_direction_x * region_mainstreams[A[i]->agent_region].x +
             A[i]->agent_direction_y * region_mainstreams[A[i]->agent_region].y;
+
+        A[i]->region_mainstream_cos = (A[i]->agent_direction_x * region_mainstreams[A[i]->agent_region].x +
+                                       A[i]->agent_direction_y * region_mainstreams[A[i]->agent_region].y) /
+                                      (sqrt(A[i]->agent_direction_x * A[i]->agent_direction_x +
+                                            A[i]->agent_direction_y * A[i]->agent_direction_y) *
+                 sqrt(region_mainstreams[A[i]->agent_region].x * region_mainstreams[A[i]->agent_region].x +
+                        region_mainstreams[A[i]->agent_region].y * region_mainstreams[A[i]->agent_region].y));
       }
 
       cout << "A[0] region mainstream inner product: " << A[0]->region_mainstream_inner_product << endl;
@@ -377,7 +384,8 @@ void PIBTM::run()
     // std::sort(A.begin(), A.end(), compare); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_cos); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_addition); // 按优先级排序
-    std::sort(A.begin(), A.end(), compare_region_inner); // 按优先级排序
+    // std::sort(A.begin(), A.end(), compare_region_inner); // 按优先级排序
+    std::sort(A.begin(), A.end(), compare_region_cos); // 按优先级排序
     for (auto a : A)
     {
       // if the agent has next location, then skip
