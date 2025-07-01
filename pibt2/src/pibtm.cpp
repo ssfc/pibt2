@@ -100,11 +100,11 @@ void PIBTM::run()
   vector<Direction> region_mainstreams(num_small_region_row * num_small_region_column); // 区域里的主流
   cout << "region num: " << region_mainstreams.size() << endl;
 
-  // 计算区域mainstream: 把区域内所有向量累加起来
+  // 计算region mainstream: 把区域内所有向量累加起来
   for(int i = 0; i < P->getNum(); i++)
   {
-    int agent_region_x = A[i]->g->pos.x / small_region_column;
-    int agent_region_y = A[i]->g->pos.y / small_region_row;
+    int agent_region_x = A[i]->v_now->pos.x / small_region_column;
+    int agent_region_y = A[i]->v_now->pos.y / small_region_row;
     int agent_region = agent_region_y * num_small_region_column + agent_region_x;
     A[i]->agent_region = agent_region;
 
