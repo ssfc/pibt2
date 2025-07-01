@@ -262,6 +262,43 @@ void PIBTM::run()
                                 sqrt(mainstream_x * mainstream_x +
                                      mainstream_y * mainstream_y));
       }
+
+      // 将map分为若干区域, 更新每个区域agent的数量
+      std::fill(region_agent_num.begin(), region_agent_num.end(), 0);
+      // 区域里的主流
+      std::fill(region_mainstreams.begin(), region_mainstreams.end(), Direction{0,0});
+      cout << "region num: " << region_mainstreams.size() << endl;
+
+      // 计算region mainstream: 把区域内所有向量累加起来
+      for(int i = 0; i < P->getNum(); i++)
+      {
+        int agent_region_x = A[i]->v_now->pos.x / small_region_column;
+        int agent_region_y = A[i]->v_now->pos.y / small_region_row;
+        int agent_region = agent_region_y * num_small_region_column + agent_region_x;
+        A[i]->agent_region = agent_region;
+
+        region_agent_num[agent_region]++;
+        region_mainstreams[agent_region].x += A[i]->agent_direction_x;
+        region_mainstreams[agent_region].y += A[i]->agent_direction_y;
+      }
+
+      //*
+      cout << "region agent num: ";
+      for(int i : region_agent_num)
+      {
+          cout << i << " ";
+      }
+      cout << endl;
+        //*/
+
+      //*
+      cout << "region mainstreams: ";
+      for(auto i : region_mainstreams)
+      {
+        cout << i.x << " " << i.y << " ";
+      }
+      cout << endl;
+       //*/
     }
 
     // planning
