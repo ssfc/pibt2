@@ -227,7 +227,7 @@ void PIBTM::run()
   };
 
   // compare priority of agents
-  auto compare_region_inner = [mainstream_x, mainstream_y]
+  auto compare_region_inner = []
       (const Agent* a, const Agent* b)
   {
     // 次级比较: 初始距离越远，优先级越高。
@@ -341,8 +341,9 @@ void PIBTM::run()
 
     // planning
     // std::sort(A.begin(), A.end(), compare); // 按优先级排序
-    std::sort(A.begin(), A.end(), compare_cos); // 按优先级排序
+    // std::sort(A.begin(), A.end(), compare_cos); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_addition); // 按优先级排序
+    std::sort(A.begin(), A.end(), compare_region_inner); // 按优先级排序
     for (auto a : A)
     {
       // if the agent has next location, then skip
