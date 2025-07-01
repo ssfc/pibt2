@@ -230,7 +230,7 @@ void PIBTM::run()
   auto compare_region_inner = []
       (const Agent* a, const Agent* b)
   {
-    // 次级比较: 初始距离越远，优先级越高。
+    // 次级比较: 越符合区域主流，优先级越高。
     // use initial distance
     if (a->region_mainstream_inner_product != b->region_mainstream_inner_product)
     {
