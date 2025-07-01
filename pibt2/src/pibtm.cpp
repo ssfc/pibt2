@@ -106,6 +106,7 @@ void PIBTM::run()
     int agent_region_x = A[i]->g->pos.x / small_region_column;
     int agent_region_y = A[i]->g->pos.y / small_region_row;
     int agent_region = agent_region_y * num_small_region_column + agent_region_x;
+    A[i]->agent_region = agent_region;
 
     region_agent_num[agent_region]++;
     region_mainstreams[agent_region].x += A[i]->agent_direction_x;
@@ -129,6 +130,15 @@ void PIBTM::run()
   }
   cout << endl;
    */
+
+  for (int i = 0; i < P->getNum(); ++i)
+  {
+    A[i]->region_mainstream_inner_product =
+        A[i]->agent_direction_x * region_mainstreams[A[i]->agent_region].x +
+           A[i]->agent_direction_y * region_mainstreams[A[i]->agent_region].y;
+  }
+
+  cout << "A[0] region mainstream inner product: " << A[0]->region_mainstream_inner_product << endl;
 
   // compare priority of agents
   auto compare = [mainstream_x, mainstream_y]
