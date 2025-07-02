@@ -64,7 +64,7 @@ private:
   // main
   void run();
 
-  static bool compare(const Agent* a, const Agent* b)
+  static bool compare_mainstream(const Agent* a, const Agent* b)
   {
     // 次级比较: 初始距离越远，优先级越高。80%概率给优先级, 不能完全不给随机
     // 内积的方法能否完全刻画agent和主流的距离
