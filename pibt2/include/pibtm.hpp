@@ -90,6 +90,37 @@ private:
     return a->tie_breaker > b->tie_breaker; // 随机值作为打破平手的最后手段。
   };
 
+
+  // compare priority of agents: inner production + timestep
+  static bool compare_addition(const Agent* a, const Agent* b)
+  {
+    // 次级比较: 内积与时间之和越大，优先级越高。
+    // use initial distance
+    //*
+    if (a->mainstream_inner_product + a->elapsed != b->mainstream_inner_product + b->elapsed)
+    {
+      return a->mainstream_inner_product + a->elapsed > b->mainstream_inner_product + b->elapsed;
+    }
+    //*/
+
+    // 优先比较: 已耗时越多，优先级越高（先被决策）。
+    if (a->elapsed != b->elapsed)
+    {
+      return a->elapsed > b->elapsed;
+    }
+
+    // 次级比较: 初始距离越远，优先级越高。
+    // use initial distance
+    if (a->init_d != b->init_d)
+    {
+      return a->init_d > b->init_d;
+    }
+
+    // 最后比较: 0-1随机数
+    return a->tie_breaker > b->tie_breaker; // 随机值作为打破平手的最后手段。
+  };
+
+  
   // compare priority of agents
   static bool compare_cos(const Agent* a, const Agent* b)
   {
