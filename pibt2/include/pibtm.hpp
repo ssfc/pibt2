@@ -145,17 +145,17 @@ private:
   // compare priority of agents
   static bool compare_cos(const Agent* a, const Agent* b)
   {
+    // 优先比较: 已耗时越多，优先级越高（先被决策）。
+    if (a->elapsed != b->elapsed)
+    {
+      return a->elapsed > b->elapsed;
+    }
+
     // 次级比较: 初始距离越远，优先级越高。
     // use initial distance
     if (a->mainstream_cos != b->mainstream_cos)
     {
       return a->mainstream_cos > b->mainstream_cos;
-    }
-
-    // 优先比较: 已耗时越多，优先级越高（先被决策）。
-    if (a->elapsed != b->elapsed)
-    {
-      return a->elapsed > b->elapsed;
     }
 
     // 次级比较: 初始距离越远，优先级越高。
