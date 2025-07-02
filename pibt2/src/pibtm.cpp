@@ -277,6 +277,7 @@ void PIBTM::run()
       // update priority
       a->elapsed = (a->v_next == a->g) ? 0 : a->elapsed + 1;
 
+      // update agent current time
       a->curr_time = timestep;
 
       // reset params
