@@ -242,7 +242,8 @@ void PIBTM::run()
     }
 
     // planning
-    std::sort(A.begin(), A.end(), compare_mainstream); // 按优先级排序
+    std::sort(A.begin(), A.end(), compare_time); // 按优先级排序
+    // std::sort(A.begin(), A.end(), compare_mainstream); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_cos); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_addition); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_region_inner); // 按优先级排序
