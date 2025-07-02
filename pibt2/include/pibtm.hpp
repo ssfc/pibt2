@@ -34,6 +34,7 @@ private:
     Node* v_next;       // next location
     Node* g;            // goal
     int elapsed;        // eta
+    int curr_time = 0; // 当前时间
     int init_d;         // initial distance
     float tie_breaker;  // epsilon, tie-breaker
 

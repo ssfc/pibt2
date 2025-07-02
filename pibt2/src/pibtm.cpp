@@ -276,6 +276,9 @@ void PIBTM::run()
       // 若到终点，重置；否则步数+1
       // update priority
       a->elapsed = (a->v_next == a->g) ? 0 : a->elapsed + 1;
+
+      a->curr_time = timestep;
+
       // reset params
       // 更新当前节点
       a->v_now = a->v_next;
