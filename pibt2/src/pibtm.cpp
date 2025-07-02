@@ -151,14 +151,15 @@ void PIBTM::run()
   auto compare = []
       (const Agent* a, const Agent* b)
   {
-    // 次级比较: 初始距离越远，优先级越高。
+    // 次级比较: 初始距离越远，优先级越高。80%概率给优先级, 不能完全不给随机
+    // 内积的方法能否完全刻画agent和主流的距离
     // use initial distance
     if (a->mainstream_inner_product != b->mainstream_inner_product)
     {
       return a->mainstream_inner_product > b->mainstream_inner_product;
     }
 
-    // 优先比较: 已耗时越多，优先级越高（先被决策）。
+    // 优先比较: 已耗时越多，优先级越高（先被决策）。80%概率给优先级, 不能完全不给随机; 如果完全找不到路再降一些
     if (a->elapsed != b->elapsed)
     {
       return a->elapsed > b->elapsed;
