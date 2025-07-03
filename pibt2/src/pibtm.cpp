@@ -280,6 +280,7 @@ void PIBTM::run()
 
       // update agent current time
       a->curr_time = timestep;
+      // cout << "agent curr time: " << a->curr_time << endl;
 
       // reset params
       // 更新当前节点
