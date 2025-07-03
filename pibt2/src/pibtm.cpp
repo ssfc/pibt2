@@ -154,7 +154,7 @@ void PIBTM::run()
   while (true)
   {
 
-    if(timestep % 50 == 0)
+    if(timestep % 20 == 0)
     {
       info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
 
@@ -251,7 +251,17 @@ void PIBTM::run()
     // std::sort(A.begin(), A.end(), compare_region_inner); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_anti_region_inner); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_region_cos); // 按优先级排序
-    std::sort(A.begin(), A.end(), compare_anti_region_cos); // 按优先级排序
+    // std::sort(A.begin(), A.end(), compare_anti_region_cos); // 按优先级排序
+
+
+    if(timestep % 6 < 2)
+    {
+      std::sort(A.begin(), A.end(), compare_mainstream); // 按mainstream优先级排序
+    }
+    else
+    {
+      std::sort(A.begin(), A.end(), compare_anti_mainstream); // 按mainstream优先级排序
+    }
 
     for (auto a : A)
     {
