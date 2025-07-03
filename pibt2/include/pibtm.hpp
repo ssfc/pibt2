@@ -115,6 +115,12 @@ private:
   // compare priority of agents: inner production + timestep
   static bool compare_addition(const Agent* a, const Agent* b)
   {
+    // 优先比较: 已耗时越多，优先级越高（先被决策）。
+    if (a->elapsed != b->elapsed)
+    {
+      return a->elapsed > b->elapsed;
+    }
+
     // 次级比较: 内积与时间之和越大，优先级越高。
     // use initial distance
     //*
@@ -123,12 +129,6 @@ private:
       return a->mainstream_inner_product + a->elapsed > b->mainstream_inner_product + b->elapsed;
     }
     //*/
-
-    // 优先比较: 已耗时越多，优先级越高（先被决策）。
-    if (a->elapsed != b->elapsed)
-    {
-      return a->elapsed > b->elapsed;
-    }
 
     // 次级比较: 初始距离越远，优先级越高。
     // use initial distance
