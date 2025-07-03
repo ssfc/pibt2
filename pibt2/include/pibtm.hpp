@@ -262,7 +262,7 @@ private:
     // use initial distance
     if (a->region_mainstream_inner_product != b->region_mainstream_inner_product)
     {
-      return a->region_mainstream_inner_product > b->region_mainstream_inner_product;
+      return a->region_mainstream_inner_product < b->region_mainstream_inner_product;
     }
 
     // 次级比较: 初始距离越远，优先级越高。
