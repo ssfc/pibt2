@@ -111,7 +111,7 @@ private:
     return a->tie_breaker > b->tie_breaker; // 随机值作为打破平手的最后手段。
   };
 
-  static bool compare_mainstream_probability(const Agent* a, const Agent* b)
+  static bool compare_anti_mainstream(const Agent* a, const Agent* b)
   {
     // 优先比较: 已耗时越多，优先级越高（先被决策）。80%概率给优先级, 不能完全不给随机; 如果完全找不到路再降一些
     if (a->elapsed != b->elapsed)
@@ -124,7 +124,7 @@ private:
     // use initial distance
     if (a->mainstream_inner_product != b->mainstream_inner_product)
     {
-      return a->mainstream_inner_product > b->mainstream_inner_product;
+      return a->mainstream_inner_product < b->mainstream_inner_product;
     }
 
     // 次级比较: 初始距离越远，优先级越高。
