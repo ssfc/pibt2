@@ -249,8 +249,10 @@ void PIBTM::run()
     // std::sort(A.begin(), A.end(), compare_anti_cos); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_addition); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_region_inner); // 按优先级排序
-    std::sort(A.begin(), A.end(), compare_anti_region_inner); // 按优先级排序
+    // std::sort(A.begin(), A.end(), compare_anti_region_inner); // 按优先级排序
     // std::sort(A.begin(), A.end(), compare_region_cos); // 按优先级排序
+    std::sort(A.begin(), A.end(), compare_anti_region_cos); // 按优先级排序
+
     for (auto a : A)
     {
       // if the agent has next location, then skip

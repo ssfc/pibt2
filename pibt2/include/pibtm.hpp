@@ -314,7 +314,7 @@ private:
     // use initial distance
     if (a->region_mainstream_cos != b->region_mainstream_cos)
     {
-      return a->region_mainstream_cos > b->region_mainstream_cos;
+      return a->region_mainstream_cos < b->region_mainstream_cos;
     }
 
     // 次级比较: 初始距离越远，优先级越高。
