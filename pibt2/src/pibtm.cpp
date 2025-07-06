@@ -147,6 +147,10 @@ void PIBTM::run()
 
   cout << "A[0] region mainstream inner product: " << A[0]->region_mainstream_inner_product << endl;
 
+  // 统计每个cell的等待时长
+  std::vector<std::vector<int>> wait_count(grid->getHeight(),
+                                           std::vector<int>(grid->getWidth(), 0));
+
 
 
   // main loop
@@ -298,6 +302,11 @@ void PIBTM::run()
       a->curr_time = timestep;
       // cout << "agent curr time: " << a->curr_time << endl;
 
+      if(a->v_now->pos.x == a->v_next->pos.x && a->v_now->pos.y == a->v_next->pos.y)
+      {
+        wait_count[a->v_now->pos.y][a->v_now->pos.x] += 1;
+      }
+
       // reset params
       // 更新当前节点
       a->v_now = a->v_next;
@@ -323,6 +332,16 @@ void PIBTM::run()
     if (timestep >= max_timestep || overCompTime()) {
       break;
     }
+  }
+
+  cout << "wait num:" << endl;
+  for(const auto& row : wait_count)
+  {
+    for(auto column : row)
+    {
+      cout << column << " ";
+    }
+    cout << endl;
   }
 
   // 4. 内存回收
