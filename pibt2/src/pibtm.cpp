@@ -302,7 +302,8 @@ void PIBTM::run()
       a->curr_time = timestep;
       // cout << "agent curr time: " << a->curr_time << endl;
 
-      if(a->v_now->pos.x == a->v_next->pos.x && a->v_now->pos.y == a->v_next->pos.y)
+      if(a->v_next != a->g && // 没有到达目标才需要计算等待
+          a->v_now->pos.x == a->v_next->pos.x && a->v_now->pos.y == a->v_next->pos.y)
       {
         wait_count[a->v_now->pos.y][a->v_now->pos.x] += 1;
       }
