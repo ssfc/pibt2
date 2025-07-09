@@ -94,8 +94,10 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
       continue;
     }
     // skip reading initial/goal nodes
-    if (std::regex_match(line, results, r_random_problem)) {
-      if (std::stoi(results[1].str())) {
+    if (std::regex_match(line, results, r_random_problem))
+    {
+      if (std::stoi(results[1].str()))
+      {
         read_scen = false;
         config_s.clear();
         config_g.clear();
