@@ -7,6 +7,8 @@
 
 #include "solver.hpp"
 
+
+// 草，原来已经到达目标点的agent还可以避让。
 class PIBTM : public MAPF_Solver
 {
 public:
