@@ -121,7 +121,8 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
     }
     // read initial/goal nodes
     if (std::regex_match(line, results, r_sg) && read_scen &&
-        (int)config_s.size() < num_agents) {
+        (int)config_s.size() < num_agents)
+    {
       int x_s = std::stoi(results[1].str());
       int y_s = std::stoi(results[2].str());
       int x_g = std::stoi(results[3].str());
