@@ -54,11 +54,14 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
     : Problem(_instance), instance_initialized(true)
 {
   // read instance file
+  // 尝试用传入的 instance 文件名打开配置信息文件。
   std::ifstream file(instance);
   if (!file) halt("file " + instance + " is not found.");
 
   std::string line;
   std::smatch results;
+  // 定义用于识别不同配置项的正则表达式
+  // 每条正则都用来匹配配置文件中的具体信息，比如地图文件、代理数量、随机种子等。
   std::regex r_comment = std::regex(R"(#.+)");
   std::regex r_map = std::regex(R"(map_file=(.+))");
   std::regex r_agents = std::regex(R"(agents=(\d+))");
