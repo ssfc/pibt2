@@ -132,6 +132,7 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
       continue;
     }
     // read initial/goal nodes
+    // 读取初始/目标点（起点终点）
     if (std::regex_match(line, results, r_sg) && read_scen &&
         (int)config_s.size() < num_agents)
     {
