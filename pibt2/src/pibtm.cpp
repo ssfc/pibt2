@@ -335,6 +335,7 @@ void PIBTM::run()
     }
   }
 
+  /*
   cout << "wait num:" << endl;
   int total_wait = 0;
   for(const auto& row : wait_count)
@@ -347,6 +348,7 @@ void PIBTM::run()
     cout << endl;
   }
   cout << "total wait: " << total_wait << endl;
+   */
 
   // 4. 内存回收
   // memory clear
