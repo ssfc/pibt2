@@ -91,7 +91,6 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
       continue;
     }
     // set agent num
-    if (std::regex_match(line, results, r_agents)) {
     if (std::regex_match(line, results, r_agents))
     {
       num_agents = std::stoi(results[1].str());
