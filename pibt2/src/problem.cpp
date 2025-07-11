@@ -127,11 +127,15 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
       int y_s = std::stoi(results[2].str());
       int x_g = std::stoi(results[3].str());
       int y_g = std::stoi(results[4].str());
-      if (!G->existNode(x_s, y_s)) {
+
+      if (!G->existNode(x_s, y_s))
+      {
         halt("start node (" + std::to_string(x_s) + ", " + std::to_string(y_s) +
              ") does not exist, invalid scenario");
       }
-      if (!G->existNode(x_g, y_g)) {
+
+      if (!G->existNode(x_g, y_g))
+      {
         halt("goal node (" + std::to_string(x_g) + ", " + std::to_string(y_g) +
              ") does not exist, invalid scenario");
       }
