@@ -74,25 +74,32 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
 
   bool read_scen = true;
   bool well_formed = false;
-  while (getline(file, line)) {
+  // 5. 逐行读取配置文件
+  while (getline(file, line))
+  {
     // for CRLF coding
     if (*(line.end() - 1) == 0x0d) line.pop_back();
     // comment
-    if (std::regex_match(line, results, r_comment)) {
+    if (std::regex_match(line, results, r_comment))
+    {
       continue;
     }
     // read map
-    if (std::regex_match(line, results, r_map)) {
+    if (std::regex_match(line, results, r_map))
+    {
       G = new Grid(results[1].str());
       continue;
     }
     // set agent num
     if (std::regex_match(line, results, r_agents)) {
+    if (std::regex_match(line, results, r_agents))
+    {
       num_agents = std::stoi(results[1].str());
       continue;
     }
     // set random seed
-    if (std::regex_match(line, results, r_seed)) {
+    if (std::regex_match(line, results, r_seed))
+    {
       MT = new std::mt19937(std::stoi(results[1].str()));
       continue;
     }
@@ -108,17 +115,20 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
       continue;
     }
     //
-    if (std::regex_match(line, results, r_well_formed)) {
+    if (std::regex_match(line, results, r_well_formed))
+    {
       if (std::stoi(results[1].str())) well_formed = true;
       continue;
     }
     // set max timestep
-    if (std::regex_match(line, results, r_max_timestep)) {
+    if (std::regex_match(line, results, r_max_timestep))
+    {
       max_timestep = std::stoi(results[1].str());
       continue;
     }
     // set max computation time
-    if (std::regex_match(line, results, r_max_comp_time)) {
+    if (std::regex_match(line, results, r_max_comp_time))
+    {
       max_comp_time = std::stoi(results[1].str());
       continue;
     }
