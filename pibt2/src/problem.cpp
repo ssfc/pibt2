@@ -168,6 +168,12 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
           config_g.push_back(g);
         }
 
+        for(int i=0;i<4;i++)
+        {
+          cout << "agent " << i << ": (" << config_s[i]->pos.x << "," << config_s[i]->pos.y <<
+          ")(" << config_g[i]->pos.x << "," << config_g[i]->pos.y << ")" << endl;
+        }
+
       }
       continue;
     }
