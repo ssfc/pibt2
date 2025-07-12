@@ -5,6 +5,8 @@
 
 #include "../include/util.hpp"
 
+using namespace std;
+
 
 // Problem 类的构造函数，用于初始化一个多智能体路径规划问题实例。
 Problem::Problem(std::string _instance, Graph* _G, std::mt19937* _MT,
@@ -110,6 +112,8 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
         read_scen = false;
         config_s.clear();
         config_g.clear();
+
+        cout << "random problem: " << results[1] << endl;
       }
       continue;
     }
