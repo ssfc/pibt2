@@ -229,6 +229,8 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
       Node* g = G->getNode(x_g, y_g);
       config_s.push_back(s);
       config_g.push_back(g);
+
+      cout << "push in start and goals" << endl;
     }
   }
 
