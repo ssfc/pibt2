@@ -114,6 +114,7 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
         config_s.clear();
         config_g.clear();
 
+        /*
         struct Agent {
           int start_x, start_y;
           int goal_x, goal_y;
@@ -178,6 +179,8 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
           cout << "agent " << i << ": (" << config_s[i]->pos.x << "," << config_s[i]->pos.y <<
           ")(" << config_g[i]->pos.x << "," << config_g[i]->pos.y << ")" << endl;
         }
+
+        */
 
       }
       continue;
