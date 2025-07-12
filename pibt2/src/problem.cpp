@@ -144,21 +144,30 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
           {
             continue; // 跳过无效行
           }
-          Agent agent{start_x, start_y, goal_x, goal_y};
-          agents.push_back(agent);
 
-          if(agents.size() > 3)
+          int x_s = start_x;
+          int y_s = start_y;
+          int x_g = goal_x;
+          int y_g = goal_y;
+
+          if (!G->existNode(x_s, y_s))
           {
-            break;
+            halt("start node (" + std::to_string(x_s) + ", " + std::to_string(y_s) +
+                 ") does not exist, invalid scenario");
           }
+
+          if (!G->existNode(x_g, y_g))
+          {
+            halt("goal node (" + std::to_string(x_g) + ", " + std::to_string(y_g) +
+                 ") does not exist, invalid scenario");
+          }
+
+          Node* s = G->getNode(x_s, y_s);
+          Node* g = G->getNode(x_g, y_g);
+          config_s.push_back(s);
+          config_g.push_back(g);
         }
 
-        // 输出检验
-        for (size_t i = 0; i < agents.size(); ++i)
-        {
-          std::cout << "Agent " << i << ": Start(" << agents[i].start_x << ", " << agents[i].start_y
-                    << "), Goal(" << agents[i].goal_x << ", " << agents[i].goal_y << ")" << std::endl;
-        }
       }
       continue;
     }
