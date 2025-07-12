@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <regex>
+#include <sstream>
 
 #include "../include/util.hpp"
 
@@ -113,7 +114,50 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
         config_s.clear();
         config_g.clear();
 
-        cout << "random problem: " << results[1] << endl;
+        struct Agent {
+          int start_x, start_y;
+          int goal_x, goal_y;
+        };
+
+        // cout << "random problem: " << results[1] << endl;
+        // 从这里开始，读入scen的内容
+        std::ifstream infile("../scene/random-32-32-10-random-1.scen");
+        if (!infile) {
+          std::cerr << "Cannot open scene!" << std::endl;
+        }
+        std::string line;
+        std::vector<Agent> agents;
+
+        // 跳过第一行 'version 1'
+        std::getline(infile, line);
+
+        while (std::getline(infile, line)) {
+          std::istringstream iss(line);
+          int bucket, map_w, map_h, start_x, start_y, goal_x, goal_y;
+          std::string map_name;
+          double opt_length;
+
+          // 依次读取列
+          if (!(iss >> bucket >> map_name >> map_w >> map_h
+                >> start_x >> start_y >> goal_x >> goal_y >> opt_length)) {
+            continue; // 跳过无效行
+          }
+          Agent agent{start_x, start_y, goal_x, goal_y};
+          agents.push_back(agent);
+
+          if(agents.size() > 3)
+          {
+            break;
+          }
+        }
+
+        cout << "read scene end" << endl;
+
+        // 输出检验
+        for (size_t i = 0; i < agents.size(); ++i) {
+          std::cout << "Agent " << i << ": Start(" << agents[i].start_x << ", " << agents[i].start_y
+                    << "), Goal(" << agents[i].goal_x << ", " << agents[i].goal_y << ")" << std::endl;
+        }
       }
       continue;
     }
@@ -138,7 +182,7 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
     // read initial/goal nodes
     // 读取初始/目标点（起点终点）
     if (std::regex_match(line, results, r_sg) && read_scen &&
-        (int)config_s.size() < num_agents)
+        (int)config_s.size() < num_agents) // 如果已经从scen里面读够了，这里就不运行了
     {
       int x_s = std::stoi(results[1].str());
       int y_s = std::stoi(results[2].str());
