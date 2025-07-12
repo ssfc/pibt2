@@ -166,6 +166,11 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
           Node* g = G->getNode(x_g, y_g);
           config_s.push_back(s);
           config_g.push_back(g);
+
+          if(config_s.size() >= num_agents)
+          {
+            break;
+          }
         }
 
         for(int i=0;i<4;i++)
