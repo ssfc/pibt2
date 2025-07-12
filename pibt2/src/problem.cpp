@@ -125,21 +125,23 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
         if (!infile) {
           std::cerr << "Cannot open scene!" << std::endl;
         }
-        std::string line;
+        std::string line_scene;
         std::vector<Agent> agents;
 
         // 跳过第一行 'version 1'
-        std::getline(infile, line);
+        std::getline(infile, line_scene);
 
-        while (std::getline(infile, line)) {
-          std::istringstream iss(line);
+        while (std::getline(infile, line_scene))
+        {
+          std::istringstream iss(line_scene);
           int bucket, map_w, map_h, start_x, start_y, goal_x, goal_y;
           std::string map_name;
           double opt_length;
 
           // 依次读取列
           if (!(iss >> bucket >> map_name >> map_w >> map_h
-                >> start_x >> start_y >> goal_x >> goal_y >> opt_length)) {
+                >> start_x >> start_y >> goal_x >> goal_y >> opt_length))
+          {
             continue; // 跳过无效行
           }
           Agent agent{start_x, start_y, goal_x, goal_y};
@@ -151,10 +153,9 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
           }
         }
 
-        cout << "read scene end" << endl;
-
         // 输出检验
-        for (size_t i = 0; i < agents.size(); ++i) {
+        for (size_t i = 0; i < agents.size(); ++i)
+        {
           std::cout << "Agent " << i << ": Start(" << agents[i].start_x << ", " << agents[i].start_y
                     << "), Goal(" << agents[i].goal_x << ", " << agents[i].goal_y << ")" << std::endl;
         }
