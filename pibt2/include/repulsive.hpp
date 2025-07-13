@@ -54,5 +54,7 @@ public:
 
   void setParams(int argc, char* argv[]);
   static void printHelp();
+
+  void set_field(Node* _v);
 };
 #endif  // REPULSIVE_HPP

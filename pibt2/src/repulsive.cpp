@@ -56,9 +56,8 @@ void PIBTR::run()
     A.push_back(a);
     occupied_now[s->id] = a;
 
-    // 初始状态的斥力场
-    field[s->pos.y][s->pos.x] = 1;
-    // 给周边cell也放上力场
+
+
   }
   solution.add(P->getConfigStart());
 
@@ -213,4 +212,22 @@ void PIBTR::printHelp()
             << "        "
             << "disable initialization of priorities "
             << "using distance from starts to goals" << std::endl;
+}
+
+void PIBTR::set_field(Node* _v)
+{
+  // 顶点位置的斥力场
+  field[_v->pos.y][_v->pos.x]++;
+  // 顶点周边cell也放上力场
+  if(_v->pos.y -1 >= 0)
+  {
+    field[_v->pos.y -1][_v->pos.x]++;
+  }
+
+  if(_v->pos.y +1 < field.size())
+  {
+    field[_v->pos.y +1][_v->pos.x]++;
+  }
+
+  
 }
