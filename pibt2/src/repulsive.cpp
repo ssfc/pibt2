@@ -224,6 +224,18 @@ void PIBTR::set_field(Node* _v)
     field[_v->pos.y -1][_v->pos.x]++;
   }
 
-  
+  if(G->existNode(_v->pos.x, _v->pos.y+1))
+  {
+    field[_v->pos.y +1][_v->pos.x]++;
+  }
 
+  if(G->existNode(_v->pos.x+1, _v->pos.y))
+  {
+    field[_v->pos.y][_v->pos.x+1]++;
+  }
+
+  if(G->existNode(_v->pos.x-1, _v->pos.y))
+  {
+    field[_v->pos.y][_v->pos.x-1]++;
+  }
 }
