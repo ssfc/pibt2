@@ -132,6 +132,10 @@ std::unique_ptr<MAPF_Solver> getSolver(const std::string solver_name,
   {
     solver = std::make_unique<PIBTM>(P);
   }
+  else if (solver_name == "PIBTR")
+  {
+    solver = std::make_unique<PIBTR>(P);
+  }
   else if (solver_name == "HCA")
   {
     solver = std::make_unique<HCA>(P);
