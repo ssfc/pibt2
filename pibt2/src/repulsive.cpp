@@ -59,7 +59,8 @@ void PIBTR::run()
   while (true)
   {
 
-    if(timestep % 10 == 0)
+    if(timestep % 1 == 0)
+    // if(timestep % 10 == 0)
     {
       info(" ", "elapsed:", getSolverElapsedTime(), ", timestep:", timestep);
     }
