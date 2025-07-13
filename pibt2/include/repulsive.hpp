@@ -7,12 +7,21 @@
 
 #include "solver.hpp"
 
+#include <vector>
+
+using namespace std;
+
+
 class PIBTR : public MAPF_Solver
 {
 public:
   static const std::string SOLVER_NAME;
 
 private:
+
+  // 斥力场
+  vector<vector<int>> field;
+
   // PIBT agent
   struct Agent {
     int id;
