@@ -1,3 +1,5 @@
+#include "repulsive.hpp"
+
 #include <getopt.h>
 
 #include <default_params.hpp>
