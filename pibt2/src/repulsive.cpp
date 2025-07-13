@@ -39,7 +39,7 @@ void PIBTR::run()
   cout << "agent num: " << A.size() << endl;
 
   field.resize(grid->getHeight(), vector<int>(grid->getWidth(), 0));
-  
+
   // initialize
   for (int i = 0; i < P->getNum(); ++i)
   {
@@ -55,6 +55,10 @@ void PIBTR::run()
                          getRandomFloat(0, 1, MT)};  // tie-breaker
     A.push_back(a);
     occupied_now[s->id] = a;
+
+    // 初始状态的斥力场
+    field[s->pos.y][s->pos.x] = 1;
+    // 给周边cell也放上力场
   }
   solution.add(P->getConfigStart());
 
