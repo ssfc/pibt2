@@ -33,6 +33,13 @@ void PIBTR::run()
 
   Agents A; // 用于存储全部Agent指针
 
+  Grid* grid = reinterpret_cast<Grid*>(G);
+  cout << "map num row: " << grid->getHeight() << endl;
+  cout << "map num column: " << grid->getWidth() << endl;
+  cout << "agent num: " << A.size() << endl;
+
+  field.resize(grid->getHeight(), vector<int>(grid->getWidth(), 0));
+  
   // initialize
   for (int i = 0; i < P->getNum(); ++i)
   {
@@ -51,14 +58,7 @@ void PIBTR::run()
   }
   solution.add(P->getConfigStart());
 
-  Grid* grid = reinterpret_cast<Grid*>(G);
-  cout << "map num row: " << grid->getHeight() << endl;
-  cout << "map num column: " << grid->getWidth() << endl;
-  cout << "agent num: " << A.size() << endl;
 
-  field.resize(grid->getHeight(), vector<int>(grid->getWidth(), 0));
-
-  
 
   // main loop
   int timestep = 0;
