@@ -219,15 +219,11 @@ void PIBTR::set_field(Node* _v)
   // 顶点位置的斥力场
   field[_v->pos.y][_v->pos.x]++;
   // 顶点周边cell也放上力场
-  if(_v->pos.y -1 >= 0)
+  if(G->existNode(_v->pos.x, _v->pos.y-1))
   {
     field[_v->pos.y -1][_v->pos.x]++;
   }
 
-  if(_v->pos.y +1 < field.size())
-  {
-    field[_v->pos.y +1][_v->pos.x]++;
-  }
-
   
+
 }
