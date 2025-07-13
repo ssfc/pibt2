@@ -141,7 +141,7 @@ void PIBTR::run()
 bool PIBTR::funcPIBT(Agent* ai, Agent* aj)
 {
   // compare two nodes
-  auto compare = [&](Node* const v, Node* const u) {
+  auto compare_nodes = [&](Node* const v, Node* const u) {
     int d_v = pathDist(ai->id, v);
     int d_u = pathDist(ai->id, u);
     if (d_v != d_u) return d_v < d_u;
@@ -159,7 +159,7 @@ bool PIBTR::funcPIBT(Agent* ai, Agent* aj)
   // randomize
   std::shuffle(C.begin(), C.end(), *MT);
   // sort
-  std::sort(C.begin(), C.end(), compare);
+  std::sort(C.begin(), C.end(), compare_nodes);
 
   for (auto u : C) {
     // avoid conflicts
