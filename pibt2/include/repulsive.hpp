@@ -56,5 +56,18 @@ public:
   static void printHelp();
 
   void set_field(Node* _v);
+  void print_field()
+  {
+    cout << "field: " << endl;
+    for(auto const& row : field)
+    {
+      for(auto const& ele : row)
+      {
+        cout << ele << " ";
+      }
+      cout << endl;
+    }
+    cout << endl;
+  }
 };
 #endif  // REPULSIVE_HPP

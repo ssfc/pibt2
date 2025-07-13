@@ -56,12 +56,12 @@ void PIBTR::run()
     A.push_back(a);
     occupied_now[s->id] = a;
 
-
+    set_field(s);
 
   }
   solution.add(P->getConfigStart());
 
-
+  print_field();
 
   // main loop
   int timestep = 0;
