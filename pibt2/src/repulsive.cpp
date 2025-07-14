@@ -56,7 +56,7 @@ void PIBTR::run()
     A.push_back(a);
     occupied_now[s->id] = a;
 
-    set_field(s);
+    increase_field(s);
 
   }
   solution.add(P->getConfigStart());
@@ -203,7 +203,7 @@ void PIBTR::printHelp()
             << "using distance from starts to goals" << std::endl;
 }
 
-void PIBTR::set_field(Node* _v)
+void PIBTR::increase_field(Node* _v)
 {
   // 顶点位置的斥力场
   field[_v->pos.y][_v->pos.x]++;

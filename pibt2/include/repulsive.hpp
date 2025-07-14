@@ -55,7 +55,7 @@ public:
   void setParams(int argc, char* argv[]);
   static void printHelp();
 
-  void set_field(Node* _v);
+  void increase_field(Node* _v);
   void print_field()
   {
     cout << "field: " << endl;
