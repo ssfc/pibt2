@@ -96,12 +96,15 @@ void PIBTR::run()
       if (occupied_now[a->v_now->id] == a)
       {
         occupied_now[a->v_now->id] = nullptr;
+        decrease_field(a->v_now);
       }
-        
+
       occupied_next[a->v_next->id] = nullptr;
       // set next location
       config[a->id] = a->v_next; // 更新位置
       occupied_now[a->v_next->id] = a; // 标记新位置被占
+      increase_field(a->v_next);
+      
       // 检查是否全部到达目标
       // check goal condition
       check_goal_cond &= (a->v_next == a->g);
