@@ -96,6 +96,7 @@ void PIBTR::run()
       // clear
       if (occupied_now[a->v_now->id] == a)
       {
+        cout << "agent " << a->id << " leave cell (" << a->v_now->pos.x << "," << a->v_now->pos.y << ") \n";
         occupied_now[a->v_now->id] = nullptr;
         decrease_field(a->v_now);
       }
