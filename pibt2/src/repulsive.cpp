@@ -93,7 +93,11 @@ void PIBTR::run()
     for (auto a : A)
     {
       // clear
-      if (occupied_now[a->v_now->id] == a) occupied_now[a->v_now->id] = nullptr;
+      if (occupied_now[a->v_now->id] == a)
+      {
+        occupied_now[a->v_now->id] = nullptr;
+      }
+        
       occupied_next[a->v_next->id] = nullptr;
       // set next location
       config[a->id] = a->v_next; // 更新位置
