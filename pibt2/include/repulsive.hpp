@@ -69,5 +69,19 @@ public:
     }
     cout << endl;
   }
+
+  // compare two nodes
+  bool compare_nodes(Node* const v, Node* const u, Agent* ai)
+  {
+    int d_v = pathDist(ai->id, v);
+    int d_u = pathDist(ai->id, u);
+    if (d_v != d_u) return d_v < d_u;
+    // tie break
+    if (occupied_now[v->id] != nullptr && occupied_now[u->id] == nullptr)
+      return false;
+    if (occupied_now[v->id] == nullptr && occupied_now[u->id] != nullptr)
+      return true;
+    return false;
+  };
 };
 #endif  // REPULSIVE_HPP

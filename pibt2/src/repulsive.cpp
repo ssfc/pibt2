@@ -140,18 +140,6 @@ void PIBTR::run()
 // 为单个智能体（ai）在下一步寻找一个合适的位置，尽可能避免与其它智能体冲突，同时能处理优先级冲突与递归回溯。
 bool PIBTR::funcPIBT(Agent* ai, Agent* aj)
 {
-  // compare two nodes
-  auto compare_nodes = [&](Node* const v, Node* const u) {
-    int d_v = pathDist(ai->id, v);
-    int d_u = pathDist(ai->id, u);
-    if (d_v != d_u) return d_v < d_u;
-    // tie break
-    if (occupied_now[v->id] != nullptr && occupied_now[u->id] == nullptr)
-      return false;
-    if (occupied_now[v->id] == nullptr && occupied_now[u->id] != nullptr)
-      return true;
-    return false;
-  };
 
   // get candidates
   Nodes C = ai->v_now->neighbor;
@@ -159,7 +147,8 @@ bool PIBTR::funcPIBT(Agent* ai, Agent* aj)
   // randomize
   std::shuffle(C.begin(), C.end(), *MT);
   // sort
-  std::sort(C.begin(), C.end(), compare_nodes);
+  std::sort(C.begin(), C.end(),
+            [this, ai](Node* const v, Node* const u){ return compare_nodes(v, u, ai); });
 
   for (auto u : C) {
     // avoid conflicts
