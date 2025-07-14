@@ -77,6 +77,7 @@ public:
     int d_u = pathDist(ai->id, u);
     if (d_v != d_u) return d_v < d_u;
     // tie break
+    // 优先选择不被占用的node
     if (occupied_now[v->id] != nullptr && occupied_now[u->id] == nullptr)
       return false;
     if (occupied_now[v->id] == nullptr && occupied_now[u->id] != nullptr)
