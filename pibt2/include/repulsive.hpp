@@ -55,7 +55,13 @@ public:
   void setParams(int argc, char* argv[]);
   static void printHelp();
 
+  // 增加斥力场
   void increase_field(Node* _v);
+
+
+  // 减小斥力场
+  void decrease_field(Node* _v);
+
   void print_field()
   {
     cout << "field: " << endl;

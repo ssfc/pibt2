@@ -228,3 +228,30 @@ void PIBTR::increase_field(Node* _v)
     field[_v->pos.y][_v->pos.x-1]++;
   }
 }
+
+
+void PIBTR::decrease_field(Node* _v)
+{
+  // 顶点位置的斥力场
+  field[_v->pos.y][_v->pos.x]++;
+  // 顶点周边cell也放上力场
+  if(G->existNode(_v->pos.x, _v->pos.y-1))
+  {
+    field[_v->pos.y -1][_v->pos.x]++;
+  }
+
+  if(G->existNode(_v->pos.x, _v->pos.y+1))
+  {
+    field[_v->pos.y +1][_v->pos.x]++;
+  }
+
+  if(G->existNode(_v->pos.x+1, _v->pos.y))
+  {
+    field[_v->pos.y][_v->pos.x+1]++;
+  }
+
+  if(G->existNode(_v->pos.x-1, _v->pos.y))
+  {
+    field[_v->pos.y][_v->pos.x-1]++;
+  }
+}
