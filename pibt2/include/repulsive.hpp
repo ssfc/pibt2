@@ -80,8 +80,11 @@ public:
     // 优先选择不被占用的node
     if (occupied_now[v->id] != nullptr && occupied_now[u->id] == nullptr)
       return false;
+    // 如果 v 未被占用且 u 被占用，返回 true，v 优先；
     if (occupied_now[v->id] == nullptr && occupied_now[u->id] != nullptr)
       return true;
+
+    // 如果占用状态相同，返回 false（默认顺序）。
     return false;
   };
 };
