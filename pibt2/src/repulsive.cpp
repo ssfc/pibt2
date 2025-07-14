@@ -57,7 +57,7 @@ void PIBTR::run()
          << ") goal (" << g->pos.x << "," << g->pos.y << ")\n";
     A.push_back(a);
     occupied_now[s->id] = a;
-    
+
     increase_field(s);
 
   }
@@ -98,10 +98,11 @@ void PIBTR::run()
       // clear
       if (occupied_now[a->v_now->id] == a)
       {
-        cout << "agent " << a->id << " leave cell (" << a->v_now->pos.x << "," << a->v_now->pos.y << ") \n";
         occupied_now[a->v_now->id] = nullptr;
-        decrease_field(a->v_now);
       }
+
+      cout << "agent " << a->id << " leave cell (" << a->v_now->pos.x << "," << a->v_now->pos.y << ") \n";
+      decrease_field(a->v_now);
 
       occupied_next[a->v_next->id] = nullptr;
       // set next location
