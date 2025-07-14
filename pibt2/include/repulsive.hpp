@@ -87,5 +87,29 @@ public:
     // 如果占用状态相同，返回 false（默认顺序）。
     return false;
   };
+
+  // compare two nodes 斥力场
+  bool compare_nodes_field(Node* const v, Node* const u, Agent* ai)
+  {
+    int d_v = pathDist(ai->id, v);
+    int d_u = pathDist(ai->id, u);
+    if (d_v != d_u) return d_v < d_u;
+    // tie break
+    // 优先选择不被占用的node
+    if (occupied_now[v->id] != nullptr && occupied_now[u->id] == nullptr)
+      return false;
+    // 如果 v 未被占用且 u 被占用，返回 true，v 优先；
+    if (occupied_now[v->id] == nullptr && occupied_now[u->id] != nullptr)
+      return true;
+
+    // 选择斥力场较低的node
+    if(field[v->pos.y][v->pos.x] != field[u->pos.y][u->pos.x])
+    {
+      return field[v->pos.y][v->pos.x] < field[u->pos.y][u->pos.x];
+    }
+
+    // 如果占用状态相同，返回 false（默认顺序）。
+    return false;
+  };
 };
 #endif  // REPULSIVE_HPP

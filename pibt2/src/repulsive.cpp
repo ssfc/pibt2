@@ -147,8 +147,8 @@ bool PIBTR::funcPIBT(Agent* ai, Agent* aj)
   // randomize
   std::shuffle(C.begin(), C.end(), *MT);
   // sort
-  std::sort(C.begin(), C.end(),
-            [this, ai](Node* const v, Node* const u){ return compare_nodes(v, u, ai); });
+  // std::sort(C.begin(), C.end(), [this, ai](Node* const v, Node* const u){ return compare_nodes(v, u, ai); });
+  std::sort(C.begin(), C.end(), [this, ai](Node* const v, Node* const u){ return compare_nodes_field(v, u, ai); });
 
   for (auto u : C) {
     // avoid conflicts
