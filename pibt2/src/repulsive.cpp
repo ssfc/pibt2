@@ -36,7 +36,6 @@ void PIBTR::run()
   Grid* grid = reinterpret_cast<Grid*>(G);
   cout << "map num row: " << grid->getHeight() << endl;
   cout << "map num column: " << grid->getWidth() << endl;
-  cout << "agent num: " << A.size() << endl;
 
   field.resize(grid->getHeight(), vector<int>(grid->getWidth(), 0));
 
@@ -53,9 +52,12 @@ void PIBTR::run()
                          0,                          // elapsed
                          d,                          // dist from s -> g
                          getRandomFloat(0, 1, MT)};  // tie-breaker
+
+    cout << "Agent " << i << " start (" << s->pos.x << "," << s->pos.y
+         << ") goal (" << g->pos.x << "," << g->pos.y << ")\n";
     A.push_back(a);
     occupied_now[s->id] = a;
-
+    
     increase_field(s);
 
   }
@@ -103,6 +105,7 @@ void PIBTR::run()
 
       occupied_next[a->v_next->id] = nullptr;
       // set next location
+      cout << "agent " << a->id << " reach cell (" << a->v_next->pos.x << "," << a->v_next->pos.y << ") \n";
       config[a->id] = a->v_next; // 更新位置
       occupied_now[a->v_next->id] = a; // 标记新位置被占
       increase_field(a->v_next);
