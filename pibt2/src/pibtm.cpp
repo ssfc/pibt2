@@ -398,8 +398,17 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
   */
 
   auto compare_dist_flow = [&](Node* const v, Node* const u) {
-    int d_v = pathDist(ai->id, v);
-    int d_u = pathDist(ai->id, u);
+
+    int delta_vx = v->pos.x - ai->v_now->pos.x;
+    int delta_vy = v->pos.y - ai->v_now->pos.y;
+
+    int delta_ux = u->pos.x - ai->v_now->pos.x;
+    int delta_uy = u->pos.y - ai->v_now->pos.y;
+
+    // cout << flow_field[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)] << endl;
+
+    int d_v = pathDist(ai->id, v) - flow_field[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)];
+    int d_u = pathDist(ai->id, u) - flow_field[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_ux, delta_uy)];
     if (d_v != d_u) return d_v < d_u;
     // tie break
     if (occupied_now[v->id] != nullptr && occupied_now[u->id] == nullptr)
