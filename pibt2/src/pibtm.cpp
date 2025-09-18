@@ -383,7 +383,7 @@ void PIBTM::run()
 bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
 {
   // compare two nodes
-  auto compare = [&](Node* const v, Node* const u) {
+  auto compare_dist = [&](Node* const v, Node* const u) {
     int d_v = pathDist(ai->id, v);
     int d_u = pathDist(ai->id, u);
     if (d_v != d_u) return d_v < d_u;
@@ -401,7 +401,7 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
   // randomize
   std::shuffle(C.begin(), C.end(), *MT);
   // sort
-  std::sort(C.begin(), C.end(), compare);
+  std::sort(C.begin(), C.end(), compare_dist);
 
   for (auto u : C) {
     // avoid conflicts
