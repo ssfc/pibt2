@@ -346,6 +346,9 @@ void PIBTM::run()
     // success
     if (check_goal_cond) {
       solved = true;
+
+      // print_flow_field();
+
       break;
     }
 
