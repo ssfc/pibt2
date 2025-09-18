@@ -300,6 +300,16 @@ void PIBTM::run()
       occupied_next[a->v_next->id] = nullptr;
       // set next location
       config[a->id] = a->v_next; // 更新位置
+
+      int delta_x = a->v_next->pos.x - a->v_now->pos.x;
+      int delta_y = a->v_next->pos.y - a->v_now->pos.y;
+
+      if(delta_x != 0 || delta_y != 0)
+      {
+        flow_field[a->v_now->pos.y][a->v_now->pos.x][delta_to_index(delta_x, delta_y)]++;
+      }
+
+
       occupied_now[a->v_next->id] = a; // 标记新位置被占
       // 检查是否全部到达目标
       // check goal condition
