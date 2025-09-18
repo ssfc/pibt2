@@ -19,6 +19,24 @@ class PIBTM : public MAPF_Solver
 public:
   static const std::string SOLVER_NAME;
 
+  void print_flow_field()
+  {
+    cout << "field: " << endl;
+    for(auto const& row : flow_field)
+    {
+      for(auto const& cell : row)
+      {
+        for(auto const& dir : cell)
+        {
+          cout << dir << " ";
+        }
+        cout << ", ";
+      }
+      cout << endl;
+    }
+    cout << endl;
+  }
+
 private:
 
   struct Direction {
