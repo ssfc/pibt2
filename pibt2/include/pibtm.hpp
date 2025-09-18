@@ -7,6 +7,11 @@
 
 #include "solver.hpp"
 
+#include <vector>
+
+
+using namespace std;
+
 
 // 草，原来已经到达目标点的agent还可以避让。
 class PIBTM : public MAPF_Solver
@@ -28,6 +33,8 @@ private:
   // (历史统计)地图有几行small region
   int num_small_region_row;
 
+  // 流量场, 有四个方向, 0右, 1左, 2下, 3上
+  vector<vector<vector<int>>> flow_field;
 
   // PIBT agent
   struct Agent {

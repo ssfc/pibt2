@@ -49,6 +49,17 @@ void PIBTM::run()
   cout << "map num column: " << grid->getWidth() << endl;
   cout << "agent num: " << A.size() << endl;
 
+  // 流量场分配空间
+  flow_field.resize(grid->getHeight());
+  for(auto& row : flow_field)
+  {
+    row.resize(grid->getWidth());
+    for(auto& cell : row)
+    {
+      cell.resize(4, 0);
+    }
+  }
+
   /*
   cout << "agent 0 curr: " << A[0]->v_now->pos.x << " " << A[0]->v_now->pos.y << endl;
   cout << "agent 0 goal: " << A[0]->g->pos.x << " " << A[0]->g->pos.y << endl;
