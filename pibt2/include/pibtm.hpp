@@ -37,6 +37,35 @@ public:
     cout << endl;
   }
 
+  static int delta_to_index(int delta_x, int delta_y)
+  {
+    // 0向右
+    if(delta_x == 1 && delta_y == 0)
+    {
+      return 0;
+    }
+
+    // 1向左
+    if(delta_x == -1 && delta_y == 0)
+    {
+      return 1;
+    }
+
+    // 2向下
+    if(delta_x == 0 && delta_y == 1)
+    {
+      return 2;
+    }
+
+    // 3向上
+    if(delta_x == 0 && delta_y == -1)
+    {
+      return 3;
+    }
+
+    return -1;
+  }
+
 private:
 
   struct Direction {
