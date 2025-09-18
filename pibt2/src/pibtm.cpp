@@ -411,6 +411,10 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
 
   // get candidates
   Nodes C = ai->v_now->neighbor;
+
+  // 看到neighbor size是4而不是5，我就放心了。说明没有把等待算在内。
+  // cout << "neighbor size: " << C.size() << endl;
+
   C.push_back(ai->v_now);
   // randomize
   std::shuffle(C.begin(), C.end(), *MT);
