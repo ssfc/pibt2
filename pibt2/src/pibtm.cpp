@@ -392,6 +392,7 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
     if (ak != nullptr && ak->v_next == nullptr) {
       if (!funcPIBT(ak, ai)) continue;  // replanning
     }
+
     // success to plan next one step
     return true;
   }
@@ -399,6 +400,7 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
   // failed to secure node
   occupied_next[ai->v_now->id] = ai;
   ai->v_next = ai->v_now;
+
   return false;
 }
 
