@@ -426,8 +426,8 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
   // randomize
   std::shuffle(C.begin(), C.end(), *MT);
   // sort
-  std::sort(C.begin(), C.end(), compare_dist);
-  // std::sort(C.begin(), C.end(), compare_dist_flow);
+  // std::sort(C.begin(), C.end(), compare_dist);
+  std::sort(C.begin(), C.end(), compare_dist_flow);
 
   for (auto u : C) {
     // avoid conflicts
