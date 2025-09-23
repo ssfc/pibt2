@@ -82,9 +82,7 @@ private:
 
   // 流量场, 有四个方向, 0右, 1左, 2下, 3上
   vector<vector<vector<int>>> flow_field;
-
-  // 储存所有时刻的流量场
-  vector<vector<vector<vector<int>>>> time_flow_field;
+  
 
   // PIBT agent
   struct Agent {

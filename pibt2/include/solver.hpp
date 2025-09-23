@@ -1,4 +1,10 @@
 #pragma once
+
+#include "paths.hpp"
+#include "plan.hpp"
+#include "problem.hpp"
+#include "util.hpp"
+
 #include <getopt.h>
 
 #include <chrono>
@@ -6,11 +12,11 @@
 #include <memory>
 #include <queue>
 #include <unordered_map>
+#include <vector>
 
-#include "paths.hpp"
-#include "plan.hpp"
-#include "problem.hpp"
-#include "util.hpp"
+
+using namespace std;
+
 
 class MinimumSolver
 {
@@ -22,6 +28,9 @@ protected:
   const int max_comp_time;  // time limit for computation, ms
   Plan solution;            // solution
   bool solved;              // success -> true, failed -> false (default)
+
+  // 储存所有时刻的流量场
+  vector<vector<vector<vector<int>>>> time_flow_field;
 
 private:
   int comp_time;             // computation time
@@ -174,7 +183,7 @@ protected:
   virtual void makeLogBasicInfo(std::ofstream& log);
   virtual void makeLogSolution(std::ofstream& log);
 
-  void record_flow_field(std::ofstream& log);
+  virtual void record_flow_field(std::ofstream& log);
 
   // -------------------------------
   // params

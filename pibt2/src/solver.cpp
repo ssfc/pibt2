@@ -226,6 +226,7 @@ void MAPF_Solver::makeLog(const std::string& logfile)
   log.open(logfile, std::ios::out);
   makeLogBasicInfo(log);
   makeLogSolution(log);
+  record_flow_field(log);
   log.close();
 }
 
@@ -276,14 +277,15 @@ void MAPF_Solver::record_flow_field(std::ofstream& log)
 {
   if (log_short) return;
 
-  log << "solution=\n";
-  for (int t = 0; t <= solution.getMakespan(); ++t) {
-    log << t << ":";
-    auto c = solution.get(t);
-    for (auto v : c) {
-      log << "(" << v->pos.x << "," << v->pos.y << "),";
+  log << "flow=\n";
+  for (int t = 0; t <= time_flow_field.size(); ++t) {
+    log << t << ":\n";
+
+    for (int i=0;i<time_flow_field[0].size();i++) {
+      for (int j=0;j<time_flow_field[0][0].size();j++) {
+
+      }
     }
-    log << "\n";
   }
 }
 
