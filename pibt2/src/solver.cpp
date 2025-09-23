@@ -289,6 +289,7 @@ void MAPF_Solver::record_flow_field(std::ofstream& log)
         }
         log << "),";
       }
+      log << "\n";
     }
 
     log << "\n";
