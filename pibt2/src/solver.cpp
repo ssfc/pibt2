@@ -270,6 +270,24 @@ void MAPF_Solver::makeLogSolution(std::ofstream& log)
   }
 }
 
+
+// 详细记录地图在每个时间步的流量信息。
+void MAPF_Solver::record_flow_field(std::ofstream& log)
+{
+  if (log_short) return;
+
+  log << "solution=\n";
+  for (int t = 0; t <= solution.getMakespan(); ++t) {
+    log << t << ":";
+    auto c = solution.get(t);
+    for (auto v : c) {
+      log << "(" << v->pos.x << "," << v->pos.y << "),";
+    }
+    log << "\n";
+  }
+}
+
+
 // 返回第 i 个智能体(Agent)从当前位置到节点 s 的距离，具体来说，是通过查表获取两点间的预计算距离。
 // -------------------------------
 // distance

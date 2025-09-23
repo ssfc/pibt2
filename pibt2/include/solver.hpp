@@ -174,6 +174,8 @@ protected:
   virtual void makeLogBasicInfo(std::ofstream& log);
   virtual void makeLogSolution(std::ofstream& log);
 
+  void record_flow_field(std::ofstream& log);
+
   // -------------------------------
   // params
 protected:
