@@ -236,6 +236,8 @@ void MAPF_Solver::makeLogBasicInfo(std::ofstream& log)
   log << "instance=" << P->getInstanceFileName() << "\n";
   log << "agents=" << P->getNum() << "\n";
   log << "map_file=" << grid->getMapFileName() << "\n";
+  log << "num_rows=" << grid->getHeight() << "\n";
+  log << "num_cols=" << grid->getWidth() << "\n";
   log << "solver=" << solver_name << "\n";
   log << "solved=" << solved << "\n";
   log << "soc=" << solution.getSOC() << "\n";
