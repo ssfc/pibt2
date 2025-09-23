@@ -60,6 +60,9 @@ void PIBTM::run()
     }
   }
 
+  // 加入初始状态, 因为config也是从初始状态开始算的
+  time_flow_field.emplace_back(flow_field);
+
   /*
   cout << "agent 0 curr: " << A[0]->v_now->pos.x << " " << A[0]->v_now->pos.y << endl;
   cout << "agent 0 goal: " << A[0]->g->pos.x << " " << A[0]->g->pos.y << endl;
