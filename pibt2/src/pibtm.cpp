@@ -340,6 +340,8 @@ void PIBTM::run()
     // update plan
     solution.add(config);
 
+    time_flow_field.emplace_back(flow_field);
+
     ++timestep;
 
     // 全部到达终点
