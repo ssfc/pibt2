@@ -345,6 +345,21 @@ void PIBTM::run()
 
     time_flow_field.emplace_back(flow_field);
 
+    if (time_flow_field.size() > 5) {
+      auto early_flow = time_flow_field.front();
+
+      for (int i=0;i<early_flow.size();i++) {
+        for (int j=0;j<early_flow[i].size();j++) {
+          for (int k=0;k<early_flow[i][j].size();k++) {
+            flow_field[i][j][k] -= early_flow[i][j][k];
+          }
+        }
+      }
+
+      // 删除第一个元素
+      time_flow_field.erase(time_flow_field.begin());
+    }
+
     ++timestep;
 
     // 全部到达终点
