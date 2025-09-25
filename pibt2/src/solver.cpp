@@ -226,7 +226,7 @@ void MAPF_Solver::makeLog(const std::string& logfile)
   log.open(logfile, std::ios::out);
   makeLogBasicInfo(log);
   makeLogSolution(log);
-  record_flow_field(log);
+  // record_flow_field(log);
   log.close();
 }
 
