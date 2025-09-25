@@ -354,6 +354,7 @@ void PIBTM::run()
     if (time_flow_field.size() > 0) {
       auto early_flow = time_flow_field.front();
 
+      /*
       cout << "timestep " << timestep << endl;
 
       cout << "early flow: " << endl;
@@ -379,7 +380,7 @@ void PIBTM::run()
         }
         cout << endl;
       }
-
+      */
 
       for (int i=0;i<early_flow.size();i++) {
         for (int j=0;j<early_flow[i].size();j++) {
