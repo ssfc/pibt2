@@ -50,8 +50,8 @@ void PIBTM::run()
   cout << "agent num: " << A.size() << endl;
 
   // 流量场分配空间
-  flow_field.resize(grid->getHeight());
-  for(auto& row : flow_field)
+  window_flow.resize(grid->getHeight());
+  for(auto& row : window_flow)
   {
     row.resize(grid->getWidth());
     for(auto& cell : row)
@@ -61,7 +61,7 @@ void PIBTM::run()
   }
 
   // 加入初始状态, 因为config也是从初始状态开始算的
-  time_flow_field.emplace_back(flow_field);
+  time_flow_field.emplace_back(window_flow);
 
   /*
   cout << "agent 0 curr: " << A[0]->v_now->pos.x << " " << A[0]->v_now->pos.y << endl;
@@ -319,7 +319,7 @@ void PIBTM::run()
 
       if(delta_x != 0 || delta_y != 0)
       {
-        flow_field[a->v_now->pos.y][a->v_now->pos.x][delta_to_index(delta_x, delta_y)]++;
+        window_flow[a->v_now->pos.y][a->v_now->pos.x][delta_to_index(delta_x, delta_y)]++;
 
         current_flow[a->v_now->pos.y][a->v_now->pos.x][delta_to_index(delta_x, delta_y)]++;
       }
@@ -363,12 +363,12 @@ void PIBTM::run()
       for (int i=0;i<early_flow.size();i++) {
         for (int j=0;j<early_flow[i].size();j++) {
           for (int k=0;k<early_flow[i][j].size();k++) {
-            flow_field[i][j][k] -= early_flow[i][j][k];
+            window_flow[i][j][k] -= early_flow[i][j][k];
             cout << early_flow.size() << " " << early_flow[i].size() << " " << early_flow[i][j].size() << endl;
-            cout << "flow field " << flow_field[i][j][k] << endl;
+            cout << "flow field " << window_flow[i][j][k] << endl;
             cout << "early flow " << early_flow[i][j][k] << endl;
 
-            if (flow_field[i][j][k] > 3000 || flow_field[i][j][k] < 0) {
+            if (window_flow[i][j][k] > 3000 || window_flow[i][j][k] < 0) {
               return;
             }
 
@@ -376,7 +376,7 @@ void PIBTM::run()
               return;
             }
 
-            if (flow_field[i][j][k] < early_flow[i][j][k]) {
+            if (window_flow[i][j][k] < early_flow[i][j][k]) {
               cerr << "invalid" << endl;
               return;
             }
@@ -453,8 +453,8 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
 
     // cout << flow_field[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)] << endl;
 
-    int d_v = pathDist(ai->id, v) - flow_field[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)];
-    int d_u = pathDist(ai->id, u) - flow_field[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_ux, delta_uy)];
+    int d_v = pathDist(ai->id, v) - window_flow[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)];
+    int d_u = pathDist(ai->id, u) - window_flow[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_ux, delta_uy)];
     if (d_v != d_u) return d_v < d_u;
     // tie break
     if (occupied_now[v->id] != nullptr && occupied_now[u->id] == nullptr)

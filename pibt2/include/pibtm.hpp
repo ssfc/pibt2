@@ -22,7 +22,7 @@ public:
   void print_flow_field()
   {
     cout << "field: " << endl;
-    for(auto const& row : flow_field)
+    for(auto const& row : window_flow)
     {
       for(auto const& cell : row)
       {
@@ -81,7 +81,7 @@ private:
   int num_small_region_row;
 
   // 流量场, 有四个方向, 0右, 1左, 2下, 3上
-  vector<vector<vector<int>>> flow_field;
+  vector<vector<vector<int>>> window_flow;
 
   // 流量场, 有四个方向, 0右, 1左, 2下, 3上
   vector<vector<vector<int>>> current_flow;
