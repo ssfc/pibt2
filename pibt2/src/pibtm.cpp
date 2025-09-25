@@ -351,7 +351,7 @@ void PIBTM::run()
 
     time_flow_field.emplace_back(current_flow);
 
-    if (time_flow_field.size() > 0) {
+    if (time_flow_field.size() > 5) {
       auto early_flow = time_flow_field.front();
 
       /*
