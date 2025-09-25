@@ -293,15 +293,9 @@ void PIBTM::run()
       }
     }
 
-    current_flow.resize(grid->getHeight());
-    for(auto& row : current_flow)
-    {
-      row.resize(grid->getWidth());
-      for(auto& cell : row)
-      {
-        cell.resize(4, 0);
-      }
-    }
+    current_flow.assign(grid->getHeight(),
+    std::vector<std::vector<int>>(grid->getWidth(),
+        std::vector<int>(4, 0)));
 
     // acting
     bool check_goal_cond = true;
@@ -357,17 +351,18 @@ void PIBTM::run()
 
     time_flow_field.emplace_back(current_flow);
 
-    if (time_flow_field.size() > 5) {
+    if (time_flow_field.size() > 0) {
       auto early_flow = time_flow_field.front();
 
       for (int i=0;i<early_flow.size();i++) {
         for (int j=0;j<early_flow[i].size();j++) {
           for (int k=0;k<early_flow[i][j].size();k++) {
-            window_flow[i][j][k] -= early_flow[i][j][k];
-            cout << early_flow.size() << " " << early_flow[i].size() << " " << early_flow[i][j].size() << endl;
-            cout << "flow field " << window_flow[i][j][k] << endl;
-            cout << "early flow " << early_flow[i][j][k] << endl;
+            // window_flow[i][j][k] -= early_flow[i][j][k];
+            // cout << early_flow.size() << " " << early_flow[i].size() << " " << early_flow[i][j].size() << endl;
+            // cout << "flow field " << window_flow[i][j][k] << endl;
+            // cout << "early flow " << early_flow[i][j][k] << endl;
 
+            /*
             if (window_flow[i][j][k] > 3000 || window_flow[i][j][k] < 0) {
               return;
             }
@@ -380,9 +375,23 @@ void PIBTM::run()
               cerr << "invalid" << endl;
               return;
             }
+            */
           }
         }
       }
+
+      cout << "early flow: " << endl;
+      for (int i=0;i<early_flow.size();i++) {
+        for (int j=0;j<early_flow[i].size();j++) {
+          cout << "(";
+          for (int k=0;k<early_flow[i][j].size();k++) {
+            cout << early_flow[i][j][k] << ", ";
+          }
+          cout << ")";
+        }
+        cout << endl;
+      }
+
 
       // 删除第一个元素
       time_flow_field.erase(time_flow_field.begin());
