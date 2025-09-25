@@ -293,6 +293,16 @@ void PIBTM::run()
       }
     }
 
+    current_flow.resize(grid->getHeight());
+    for(auto& row : current_flow)
+    {
+      row.resize(grid->getWidth());
+      for(auto& cell : row)
+      {
+        cell.resize(4, 0);
+      }
+    }
+
     // acting
     bool check_goal_cond = true;
     Config config(P->getNum(), nullptr);
@@ -310,6 +320,8 @@ void PIBTM::run()
       if(delta_x != 0 || delta_y != 0)
       {
         flow_field[a->v_now->pos.y][a->v_now->pos.x][delta_to_index(delta_x, delta_y)]++;
+
+        current_flow[a->v_now->pos.y][a->v_now->pos.x][delta_to_index(delta_x, delta_y)]++;
       }
 
 
@@ -343,7 +355,7 @@ void PIBTM::run()
     // update plan
     solution.add(config);
 
-    time_flow_field.emplace_back(flow_field);
+    time_flow_field.emplace_back(current_flow);
 
     if (time_flow_field.size() > 5) {
       auto early_flow = time_flow_field.front();
@@ -352,6 +364,22 @@ void PIBTM::run()
         for (int j=0;j<early_flow[i].size();j++) {
           for (int k=0;k<early_flow[i][j].size();k++) {
             flow_field[i][j][k] -= early_flow[i][j][k];
+            cout << early_flow.size() << " " << early_flow[i].size() << " " << early_flow[i][j].size() << endl;
+            cout << "flow field " << flow_field[i][j][k] << endl;
+            cout << "early flow " << early_flow[i][j][k] << endl;
+
+            if (flow_field[i][j][k] > 3000 || flow_field[i][j][k] < 0) {
+              return;
+            }
+
+            if (early_flow[i][j][k] > 3000 || early_flow[i][j][k] < 0) {
+              return;
+            }
+
+            if (flow_field[i][j][k] < early_flow[i][j][k]) {
+              cerr << "invalid" << endl;
+              return;
+            }
           }
         }
       }
