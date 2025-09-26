@@ -4,6 +4,26 @@
 #include <iomanip> // 持流输入输出（IO）时的数据格式控制，也就是“输入输出格式化”的意思。
 
 
+
+std::string get_cpu_name() {
+#ifdef _WIN32
+  std::array<char, 128> buffer;
+  std::string result;
+  std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen("wmic cpu get Name", "r"), _pclose);
+  if (!pipe) return "";
+  while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+    result += buffer.data();
+  }
+  // 处理结果，仅保留指定型号
+  if (result.find("8250U") != std::string::npos) return "8250U";
+  if (result.find("12100F") != std::string::npos) return "12100F";
+  if (result.find("10400F") != std::string::npos) return "10400F";
+  return "Unknown";
+#else
+  return "12400F";
+#endif
+}
+
 // 传入的 Problem 对象 _P 初始化 MinimumSolver 类的各项成员变量。
 MinimumSolver::MinimumSolver(Problem* _P)
     : solver_name(""),
