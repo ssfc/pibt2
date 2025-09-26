@@ -21,6 +21,75 @@ PIBTM::PIBTM(MAPF_Instance* _P)
   solver_name = PIBTM::SOLVER_NAME;
 }
 
+
+void PIBTM::keep_window_flow()
+{
+  window_flow_each.emplace_back(current_flow);
+
+  if (window_flow_each.size() > 5) {
+    auto early_flow = window_flow_each.front();
+
+    /*
+    cout << "timestep " << timestep << endl;
+
+    cout << "early flow: " << endl;
+    for (int i=0;i<early_flow.size();i++) {
+      for (int j=0;j<early_flow[i].size();j++) {
+        cout << "(";
+        for (int k=0;k<early_flow[i][j].size();k++) {
+          cout << early_flow[i][j][k] << ", ";
+        }
+        cout << ")";
+      }
+      cout << endl;
+    }
+
+    cout << "window flow sum: " << endl;
+    for (int i=0;i<window_flow_sum.size();i++) {
+      for (int j=0;j<window_flow_sum[i].size();j++) {
+        cout << "(";
+        for (int k=0;k<window_flow_sum[i][j].size();k++) {
+          cout << window_flow_sum[i][j][k] << ", ";
+        }
+        cout << ")";
+      }
+      cout << endl;
+    }
+    */
+
+    for (int i=0;i<early_flow.size();i++) {
+      for (int j=0;j<early_flow[i].size();j++) {
+        for (int k=0;k<early_flow[i][j].size();k++) {
+          window_flow_sum[i][j][k] -= early_flow[i][j][k];
+          // cout << early_flow.size() << " " << early_flow[i].size() << " " << early_flow[i][j].size() << endl;
+          // cout << "window flow sum " << window_flow_sum[i][j][k] << endl;
+          // cout << "early flow " << early_flow[i][j][k] << endl;
+
+          //*
+          if (window_flow_sum[i][j][k] > 3000 || window_flow_sum[i][j][k] < 0) {
+            return;
+          }
+
+          if (early_flow[i][j][k] > 3000 || early_flow[i][j][k] < 0) {
+            return;
+          }
+
+          if (window_flow_sum[i][j][k] < 0) {
+            cerr << "invalid: early flow larger than window flow" << endl;
+            return;
+          }
+          //*/
+        }
+      }
+    }
+
+
+    // 删除第一个元素
+    window_flow_each.erase(window_flow_each.begin());
+  }
+}
+
+
 void PIBTM::run()
 {
 
@@ -349,69 +418,7 @@ void PIBTM::run()
     // update plan
     solution.add(config);
 
-    window_flow_each.emplace_back(current_flow);
-
-    if (window_flow_each.size() > 5) {
-      auto early_flow = window_flow_each.front();
-
-      /*
-      cout << "timestep " << timestep << endl;
-
-      cout << "early flow: " << endl;
-      for (int i=0;i<early_flow.size();i++) {
-        for (int j=0;j<early_flow[i].size();j++) {
-          cout << "(";
-          for (int k=0;k<early_flow[i][j].size();k++) {
-            cout << early_flow[i][j][k] << ", ";
-          }
-          cout << ")";
-        }
-        cout << endl;
-      }
-
-      cout << "window flow sum: " << endl;
-      for (int i=0;i<window_flow_sum.size();i++) {
-        for (int j=0;j<window_flow_sum[i].size();j++) {
-          cout << "(";
-          for (int k=0;k<window_flow_sum[i][j].size();k++) {
-            cout << window_flow_sum[i][j][k] << ", ";
-          }
-          cout << ")";
-        }
-        cout << endl;
-      }
-      */
-
-      for (int i=0;i<early_flow.size();i++) {
-        for (int j=0;j<early_flow[i].size();j++) {
-          for (int k=0;k<early_flow[i][j].size();k++) {
-            window_flow_sum[i][j][k] -= early_flow[i][j][k];
-            // cout << early_flow.size() << " " << early_flow[i].size() << " " << early_flow[i][j].size() << endl;
-            // cout << "window flow sum " << window_flow_sum[i][j][k] << endl;
-            // cout << "early flow " << early_flow[i][j][k] << endl;
-
-            //*
-            if (window_flow_sum[i][j][k] > 3000 || window_flow_sum[i][j][k] < 0) {
-              return;
-            }
-
-            if (early_flow[i][j][k] > 3000 || early_flow[i][j][k] < 0) {
-              return;
-            }
-
-            if (window_flow_sum[i][j][k] < 0) {
-              cerr << "invalid: early flow larger than window flow" << endl;
-              return;
-            }
-            //*/
-          }
-        }
-      }
-
-
-      // 删除第一个元素
-      window_flow_each.erase(window_flow_each.begin());
-    }
+    keep_window_flow();
 
     ++timestep;
 

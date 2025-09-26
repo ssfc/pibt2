@@ -390,6 +390,8 @@ public:
 
   void setParams(int argc, char* argv[]);
   static void printHelp();
+
+  void keep_window_flow();
 };
 
 
