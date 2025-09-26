@@ -210,12 +210,12 @@ void MAPF_Solver::printResult()
             << solution.getMakespan() << " (LB=" << std::right << std::setw(6)
             << getLowerBoundMakespan() << ")" << std::endl;
 
-  
+  string to_csv_path = "../result/experimental_results.csv";
 
   std::ofstream to_csv(to_csv_path, std::ios::app);  // 以追加模式打开文件
   if (!to_csv.is_open()) {
       std::cerr << "Error opening csv!" << std::endl;
-      return false;
+      return;
   }
 
   to_csv << -1 << ","; // id
@@ -223,10 +223,6 @@ void MAPF_Solver::printResult()
   std::filesystem::path filePath(from_map_name);
   std::string instance = filePath.filename().string(); // 提取文件名部分
   to_csv << instance << ","; // instance
-
-  std::filesystem::path agentPath(from_agent_file);
-  std::string agent_file = agentPath.filename().string(); // 提取文件名部分
-  to_csv << agent_file << ","; // agent file
 
   to_csv << num_agents << ","; // num of agents
   to_csv << get_cpu_name() << ","; // device
