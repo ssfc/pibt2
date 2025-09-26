@@ -30,10 +30,10 @@ protected:
   bool solved;              // success -> true, failed -> false (default)
 
   // 储存时间窗范围内的流量场
-  vector<vector<vector<vector<int>>>> time_flow_field;
+  vector<vector<vector<vector<int>>>> window_flow_each;
 
   // 时间窗范围内的流量场之和, 有四个方向, 0右, 1左, 2下, 3上
-  vector<vector<vector<int>>> window_flow;
+  vector<vector<vector<int>>> window_flow_sum;
 
 private:
   int comp_time;             // computation time

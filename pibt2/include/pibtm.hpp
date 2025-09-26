@@ -22,7 +22,7 @@ public:
   void print_flow_field()
   {
     cout << "field: " << endl;
-    for(auto const& row : window_flow)
+    for(auto const& row : window_flow_sum)
     {
       for(auto const& cell : row)
       {

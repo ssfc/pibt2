@@ -279,14 +279,14 @@ void MAPF_Solver::record_flow_field(std::ofstream& log)
   if (log_short) return;
 
   log << "time flow=\n";
-  for (int t = 0; t < time_flow_field.size(); ++t) {
+  for (int t = 0; t < window_flow_each.size(); ++t) {
     log << t << ":\n";
 
-    for (int i=0;i<time_flow_field[t].size();i++) {
-      for (int j=0;j<time_flow_field[t][i].size();j++) {
+    for (int i=0;i<window_flow_each[t].size();i++) {
+      for (int j=0;j<window_flow_each[t][i].size();j++) {
         log << "(";
-        for (int k=0;k<time_flow_field[t][i][j].size();k++) {
-          log << time_flow_field[t][i][j][k] << ",";
+        for (int k=0;k<window_flow_each[t][i][j].size();k++) {
+          log << window_flow_each[t][i][j][k] << ",";
         }
         log << "),";
       }
@@ -304,11 +304,11 @@ void MAPF_Solver::record_sum_flow(std::ofstream& log)
   if (log_short) return;
 
   log << "sum flow=\n";
-  for (int i=0;i<window_flow.size();i++) {
-    for (int j=0;j<window_flow[i].size();j++) {
+  for (int i=0;i<window_flow_sum.size();i++) {
+    for (int j=0;j<window_flow_sum[i].size();j++) {
       log << "(";
-      for (int k=0;k<window_flow[i][j].size();k++) {
-        log << window_flow[i][j][k] << ",";
+      for (int k=0;k<window_flow_sum[i][j].size();k++) {
+        log << window_flow_sum[i][j][k] << ",";
       }
       log << "),";
     }
