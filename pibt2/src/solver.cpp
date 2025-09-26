@@ -271,14 +271,6 @@ void MAPF_Solver::printResult()
   to_csv << std::put_time(std::localtime(&currentTime), "%Y-%m-%d %H:%M:%S")
          << ",";
 
-  to_log << "highLevelExpanded: " << num_expanded_high_level_nodes << std::endl;
-  std::cout << "highLevelExpanded: " << num_expanded_high_level_nodes << std::endl;
-  to_csv << num_expanded_high_level_nodes << ","; // num high nodes expanded
-
-  to_log << "lowLevelExpanded: " << num_expanded_low_level_nodes << std::endl;
-  std::cout << "lowLevelExpanded: " << num_expanded_low_level_nodes << std::endl;
-  to_csv << num_expanded_low_level_nodes << "\n"; // num low nodes expanded
-
 }
 
 void MinimumSolver::printHelpWithoutOption(const std::string& solver_name)
