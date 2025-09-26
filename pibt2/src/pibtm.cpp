@@ -485,9 +485,16 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
 
     // cout << flow_field[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)] << endl;
 
-    int d_v = pathDist(ai->id, v) - window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)];
-    int d_u = pathDist(ai->id, u) - window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_ux, delta_uy)];
-    if (d_v != d_u) return d_v < d_u;
+    int d_v = pathDist(ai->id, v);
+    int d_u = pathDist(ai->id, u);
+
+    if (d_v != d_u) {
+      return d_v < d_u;
+    }
+    else {
+      return window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)]
+      > window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_ux, delta_uy)];
+    }
     // tie break
     if (occupied_now[v->id] != nullptr && occupied_now[u->id] == nullptr)
       return false;
