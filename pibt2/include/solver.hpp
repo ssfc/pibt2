@@ -188,6 +188,8 @@ protected:
 
   virtual void record_flow_field(std::ofstream& log);
 
+  virtual void record_sum_flow(std::ofstream& log);
+
   // -------------------------------
   // params
 protected:

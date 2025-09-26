@@ -294,6 +294,13 @@ void MAPF_Solver::record_flow_field(std::ofstream& log)
 
     log << "\n";
   }
+}
+
+
+// 详细记录地图在每个时间步的流量信息。
+void MAPF_Solver::record_sum_flow(std::ofstream& log)
+{
+  if (log_short) return;
 
   log << "sum flow=\n";
   for (int i=0;i<window_flow.size();i++) {
