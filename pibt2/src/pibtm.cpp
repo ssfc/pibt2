@@ -369,12 +369,12 @@ void PIBTM::run()
         cout << endl;
       }
 
-      cout << "window flow: " << endl;
-      for (int i=0;i<window_flow.size();i++) {
-        for (int j=0;j<window_flow[i].size();j++) {
+      cout << "window flow sum: " << endl;
+      for (int i=0;i<window_flow_sum.size();i++) {
+        for (int j=0;j<window_flow_sum[i].size();j++) {
           cout << "(";
-          for (int k=0;k<window_flow[i][j].size();k++) {
-            cout << window_flow[i][j][k] << ", ";
+          for (int k=0;k<window_flow_sum[i][j].size();k++) {
+            cout << window_flow_sum[i][j][k] << ", ";
           }
           cout << ")";
         }
@@ -387,7 +387,7 @@ void PIBTM::run()
           for (int k=0;k<early_flow[i][j].size();k++) {
             window_flow_sum[i][j][k] -= early_flow[i][j][k];
             // cout << early_flow.size() << " " << early_flow[i].size() << " " << early_flow[i][j].size() << endl;
-            // cout << "flow field " << window_flow[i][j][k] << endl;
+            // cout << "window flow sum " << window_flow_sum[i][j][k] << endl;
             // cout << "early flow " << early_flow[i][j][k] << endl;
 
             //*
