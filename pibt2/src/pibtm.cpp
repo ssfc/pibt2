@@ -418,7 +418,7 @@ void PIBTM::run()
     // update plan
     solution.add(config);
 
-    keep_window_flow();
+    // keep_window_flow();
 
     ++timestep;
 
