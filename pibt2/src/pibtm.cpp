@@ -491,10 +491,12 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
     if (d_v != d_u) {
       return d_v < d_u;
     }
+    /*
     else {
       return window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)]
       > window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_ux, delta_uy)];
     }
+    */
     // tie break
     if (occupied_now[v->id] != nullptr && occupied_now[u->id] == nullptr)
       return false;
