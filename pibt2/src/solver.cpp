@@ -209,6 +209,80 @@ void MAPF_Solver::printResult()
             << ", makespan=" << std::right << std::setw(4)
             << solution.getMakespan() << " (LB=" << std::right << std::setw(6)
             << getLowerBoundMakespan() << ")" << std::endl;
+
+  
+
+  std::ofstream to_csv(to_csv_path, std::ios::app);  // 以追加模式打开文件
+  if (!to_csv.is_open()) {
+      std::cerr << "Error opening csv!" << std::endl;
+      return false;
+  }
+
+  to_csv << -1 << ","; // id
+
+  std::filesystem::path filePath(from_map_name);
+  std::string instance = filePath.filename().string(); // 提取文件名部分
+  to_csv << instance << ","; // instance
+
+  std::filesystem::path agentPath(from_agent_file);
+  std::string agent_file = agentPath.filename().string(); // 提取文件名部分
+  to_csv << agent_file << ","; // agent file
+
+  to_csv << num_agents << ","; // num of agents
+  to_csv << get_cpu_name() << ","; // device
+  to_csv << method_name<< ","; // high level method
+  to_csv << "ASTAR-whoenig" << ","; // low level method
+  to_csv << disappear_at_goal << ","; // disappear or not
+  to_csv << "NULL" << ","; // CAT break-tie
+  to_csv << "NULL" << ","; // random seed
+
+  double plan_time = (clock() - start_time) / CLOCKS_PER_SEC;
+  solution = best_node.all_agents_paths;
+
+  std::cout << "Planning successful! " << std::endl;
+  if(debug_info==2)
+  {
+      std::cout << "cbs_num_iters: " << cbs_iter_num << std::endl;
+  }
+
+  int makespan = 0;
+  for (const auto& agent_plan : solution)
+  {
+      makespan = std::max<int>(makespan, agent_plan.cost);
+  }
+
+  std::ofstream to_log(to_log_name, std::ios::out);
+  to_log << "statistics:" << std::endl;
+
+  to_log << "sum_individual_cost: " << best_node.sum_individual_cost << std::endl;
+  std::cout << "sum_individual_cost: " << best_node.sum_individual_cost << std::endl;
+  to_csv << best_node.sum_individual_cost << ","; // cost
+
+  to_log << "makespan: " << makespan << std::endl;
+
+  std::cout << "runtime (s): " << plan_time << std::endl;
+  to_csv << plan_time << ",";
+  to_csv << "NULL" << ","; // comment
+  to_csv << "https://github.com/ssfc/libMultiRobotPlanning-isolated" << ","; // method source
+
+  // 获取当前时间点
+  auto now = std::chrono::system_clock::now();
+
+  // 转换为 time_t 格式
+  std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
+
+  // 输出时间
+  to_csv << std::put_time(std::localtime(&currentTime), "%Y-%m-%d %H:%M:%S")
+         << ",";
+
+  to_log << "highLevelExpanded: " << num_expanded_high_level_nodes << std::endl;
+  std::cout << "highLevelExpanded: " << num_expanded_high_level_nodes << std::endl;
+  to_csv << num_expanded_high_level_nodes << ","; // num high nodes expanded
+
+  to_log << "lowLevelExpanded: " << num_expanded_low_level_nodes << std::endl;
+  std::cout << "lowLevelExpanded: " << num_expanded_low_level_nodes << std::endl;
+  to_csv << num_expanded_low_level_nodes << "\n"; // num low nodes expanded
+
 }
 
 void MinimumSolver::printHelpWithoutOption(const std::string& solver_name)
