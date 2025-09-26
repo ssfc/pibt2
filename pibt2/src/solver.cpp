@@ -277,7 +277,7 @@ void MAPF_Solver::record_flow_field(std::ofstream& log)
 {
   if (log_short) return;
 
-  log << "flow=\n";
+  log << "time flow=\n";
   for (int t = 0; t < time_flow_field.size(); ++t) {
     log << t << ":\n";
 
@@ -292,6 +292,18 @@ void MAPF_Solver::record_flow_field(std::ofstream& log)
       log << "\n";
     }
 
+    log << "\n";
+  }
+
+  log << "sum flow=\n";
+  for (int i=0;i<window_flow.size();i++) {
+    for (int j=0;j<window_flow[i].size();j++) {
+      log << "(";
+      for (int k=0;k<window_flow[i][j].size();k++) {
+        log << window_flow[i][j][k] << ",";
+      }
+      log << "),";
+    }
     log << "\n";
   }
 }

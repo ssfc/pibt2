@@ -81,9 +81,6 @@ private:
   int num_small_region_row;
 
   // 流量场, 有四个方向, 0右, 1左, 2下, 3上
-  vector<vector<vector<int>>> window_flow;
-
-  // 流量场, 有四个方向, 0右, 1左, 2下, 3上
   vector<vector<vector<int>>> current_flow;
 
   // PIBT agent
