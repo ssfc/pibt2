@@ -259,14 +259,6 @@ void MAPF_Solver::printResult()
   to_csv << "NULL" << ","; // CAT break-tie
   to_csv << "NULL" << ","; // random seed
 
-  solution = best_node.all_agents_paths;
-
-  int makespan = 0;
-  for (const auto& agent_plan : solution)
-  {
-      makespan = std::max<int>(makespan, agent_plan.cost);
-  }
-
   to_csv << solution.getSOC() << ","; // cost
 
   to_csv << getCompTime() << ",";
