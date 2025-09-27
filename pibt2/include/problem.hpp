@@ -51,6 +51,9 @@ protected:
   void warn(const std::string& msg) const;
 
 public:
+
+  int rand_seed;
+
   Problem(){};
   Problem(const std::string& _instance) : instance(_instance) {}
   Problem(std::string _instance, Graph* _G, std::mt19937* _MT, Config _config_s,

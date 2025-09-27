@@ -103,6 +103,7 @@ MAPF_Instance::MAPF_Instance(const std::string& _instance)
     if (std::regex_match(line, results, r_seed))
     {
       MT = new std::mt19937(std::stoi(results[1].str()));
+      rand_seed = std::stoi(results[1].str());
       continue;
     }
     // skip reading initial/goal nodes
