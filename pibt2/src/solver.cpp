@@ -258,7 +258,7 @@ void MAPF_Solver::printResult()
   to_csv << getSolverName() << ","; // low level method
   int disappear_at_goal = 2; // 既不是停在终点, 也不是在终点消失; 而是在终点晃动
   to_csv << disappear_at_goal << ","; // disappear or not
-  to_csv << "NULL" << ","; // CAT break-tie
+  to_csv << P->getMaxTimestep() << ","; // CAT break-tie, 现在记录max timestep.
   to_csv << P->rand_seed << ","; // random seed
 
   to_csv << solution.getSOC() << ","; // cost
