@@ -259,7 +259,6 @@ void MAPF_Solver::printResult()
   to_csv << "NULL" << ","; // CAT break-tie
   to_csv << "NULL" << ","; // random seed
 
-  double plan_time = (clock() - start_time) / CLOCKS_PER_SEC;
   solution = best_node.all_agents_paths;
 
   int makespan = 0;
@@ -270,10 +269,7 @@ void MAPF_Solver::printResult()
 
   to_csv << solution.getSOC() << ","; // cost
 
-  to_log << "makespan: " << makespan << std::endl;
-
-  std::cout << "runtime (s): " << plan_time << std::endl;
-  to_csv << plan_time << ",";
+  to_csv << getCompTime() << ",";
   to_csv << "NULL" << ","; // comment
   to_csv << "https://github.com/ssfc/libMultiRobotPlanning-isolated" << ","; // method source
 
