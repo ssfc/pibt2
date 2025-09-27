@@ -4491,4 +4491,3 @@ id,map_file,agent_file,num_agents,device,high level planner,low level planner,di
 -1,random-32-32-10.map,random-32-32-10-random-1.scen,318,12400F,CBSDepthSelectConflict,ASTAR-whoenig,1,NULL,NULL,INF,1800.01,NULL,https://github.com/ssfc/libMultiRobotPlanning-isolated,2025-09-09 07:08:49,264021,26267129
 -1,random-32-32-10.map,random-32-32-10-random-1.scen,319,12400F,CBSDepthSelectConflict,ASTAR-whoenig,1,NULL,NULL,8211,454.292,NULL,https://github.com/ssfc/libMultiRobotPlanning-isolated,2025-09-09 07:16:38,62718,7328753
 -1,random-32-32-10.map,random-32-32-10-random-1.scen,320,12400F,CBSDepthSelectConflict,ASTAR-whoenig,1,NULL,NULL,INF,1800.04,NULL,https://github.com/ssfc/libMultiRobotPlanning-isolated,2025-09-09 07:46:43,249901,29004300
--1,../instances/mapf/sample.txt,550,12400F,NULL,PIBTM,2,NULL,1,27652,14,NULL,https://github.com/ssfc/libMultiRobotPlanning-isolated,2025-09-27 09:10:41,
