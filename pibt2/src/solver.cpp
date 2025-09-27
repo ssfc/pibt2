@@ -265,7 +265,7 @@ void MAPF_Solver::printResult()
 
   to_csv << getCompTime() / 1000.0 << ",";
   to_csv << "NULL" << ","; // comment
-  to_csv << "https://github.com/ssfc/libMultiRobotPlanning-isolated" << ","; // method source
+  to_csv << "https://github.com/ssfc/pibt2" << ","; // method source
 
   // 获取当前时间点
   auto now = std::chrono::system_clock::now();
