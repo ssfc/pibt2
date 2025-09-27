@@ -247,7 +247,7 @@ void MAPF_Solver::printResult()
 
   to_csv << -1 << ","; // id
 
-  to_csv << P->getInstanceFileName() << ","; // instance
+  to_csv << reinterpret_cast<Grid*>(P->getG())->getMapFileName() << ","; // instance
 
   to_csv << P->getNum() << ","; // num of agents
   to_csv << get_cpu_name() << ","; // device
@@ -273,7 +273,7 @@ void MAPF_Solver::printResult()
 
   // 输出时间
   to_csv << std::put_time(std::localtime(&currentTime), "%Y-%m-%d %H:%M:%S")
-         << ",";
+         << "\n";
 
 }
 
