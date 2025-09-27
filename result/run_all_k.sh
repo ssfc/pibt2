@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for n in $(seq 1 200)
+for n in $(seq 1 550)
 do
 	    # 生成一个临时配置文件
 	        cp ../instances/mapf/sample.txt temp.txt
