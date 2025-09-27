@@ -221,6 +221,13 @@ void MAPF_Solver::setSolverOption(std::shared_ptr<MAPF_Solver> solver,
 // -------------------------------
 void MAPF_Solver::printResult()
 {
+  if (solved) {
+    std::cout << "Planning successful! " << std::endl;
+  }
+  else {
+    std::cout << "Fail to find solution! " << std::endl;
+  }
+
   std::cout << "solved=" << solved << ", solver=" << std::right << std::setw(8)
             << solver_name << ", comp_time(ms)=" << std::right << std::setw(8)
             << getCompTime() << ", soc=" << std::right << std::setw(6)
@@ -253,12 +260,6 @@ void MAPF_Solver::printResult()
 
   double plan_time = (clock() - start_time) / CLOCKS_PER_SEC;
   solution = best_node.all_agents_paths;
-
-  std::cout << "Planning successful! " << std::endl;
-  if(debug_info==2)
-  {
-      std::cout << "cbs_num_iters: " << cbs_iter_num << std::endl;
-  }
 
   int makespan = 0;
   for (const auto& agent_plan : solution)
