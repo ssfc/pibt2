@@ -268,12 +268,7 @@ void MAPF_Solver::printResult()
       makespan = std::max<int>(makespan, agent_plan.cost);
   }
 
-  std::ofstream to_log(to_log_name, std::ios::out);
-  to_log << "statistics:" << std::endl;
-
-  to_log << "sum_individual_cost: " << best_node.sum_individual_cost << std::endl;
-  std::cout << "sum_individual_cost: " << best_node.sum_individual_cost << std::endl;
-  to_csv << best_node.sum_individual_cost << ","; // cost
+  to_csv << solution.getSOC() << ","; // cost
 
   to_log << "makespan: " << makespan << std::endl;
 
