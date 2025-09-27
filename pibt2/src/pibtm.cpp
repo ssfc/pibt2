@@ -9,8 +9,8 @@
 
 using namespace std;
 
-
-const std::string PIBTM::SOLVER_NAME = "PIBTM";
+const std::string PIBTM::SOLVER_NAME = "PIBT";
+// const std::string PIBTM::SOLVER_NAME = "PIBTM";
 
 // 初始化 PIBT 路径规划求解器实例。
 PIBTM::PIBTM(MAPF_Instance* _P)
