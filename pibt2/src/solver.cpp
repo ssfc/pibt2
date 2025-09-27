@@ -263,7 +263,7 @@ void MAPF_Solver::printResult()
 
   to_csv << solution.getSOC() << ","; // cost
 
-  to_csv << getCompTime() << ",";
+  to_csv << getCompTime() / 1000.0 << ",";
   to_csv << "NULL" << ","; // comment
   to_csv << "https://github.com/ssfc/libMultiRobotPlanning-isolated" << ","; // method source
 
