@@ -249,6 +249,8 @@ void MAPF_Solver::printResult()
 
   to_csv << reinterpret_cast<Grid*>(P->getG())->getMapFileName() << ","; // instance
 
+  to_csv << "randGen" << ","; // agent file, random generated.
+
   to_csv << P->getNum() << ","; // num of agents
   to_csv << get_cpu_name() << ","; // device
   string method_name = "NULL"; // 可以是Lacam, 但这里就只是NULL了
