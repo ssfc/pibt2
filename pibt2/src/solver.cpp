@@ -247,13 +247,13 @@ void MAPF_Solver::printResult()
 
   to_csv << -1 << ","; // id
 
-  to_csv << instance << ","; // instance
+  to_csv << P->getInstanceFileName() << ","; // instance
 
-  to_csv << num_agents << ","; // num of agents
+  to_csv << P->getNum() << ","; // num of agents
   to_csv << get_cpu_name() << ","; // device
   string method_name = "NULL"; // 可以是Lacam, 但这里就只是NULL了
   to_csv << method_name<< ","; // high level method
-  to_csv << "PIBT" << ","; // low level method
+  to_csv << getSolverName() << ","; // low level method
   int disappear_at_goal = 2; // 既不是停在终点, 也不是在终点消失; 而是在终点晃动
   to_csv << disappear_at_goal << ","; // disappear or not
   to_csv << "NULL" << ","; // CAT break-tie
