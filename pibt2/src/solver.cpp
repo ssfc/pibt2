@@ -240,14 +240,13 @@ void MAPF_Solver::printResult()
 
   to_csv << -1 << ","; // id
 
-  std::filesystem::path filePath(from_map_name);
-  std::string instance = filePath.filename().string(); // 提取文件名部分
   to_csv << instance << ","; // instance
 
   to_csv << num_agents << ","; // num of agents
   to_csv << get_cpu_name() << ","; // device
   to_csv << method_name<< ","; // high level method
   to_csv << "ASTAR-whoenig" << ","; // low level method
+  int disappear_at_goal = 2; // 既不是停在终点, 也不是在终点消失; 而是在终点晃动
   to_csv << disappear_at_goal << ","; // disappear or not
   to_csv << "NULL" << ","; // CAT break-tie
   to_csv << "NULL" << ","; // random seed
