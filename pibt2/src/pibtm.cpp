@@ -9,7 +9,8 @@
 
 using namespace std;
 
-const std::string PIBTM::SOLVER_NAME = "PIBT";
+// const std::string PIBTM::SOLVER_NAME = "PIBT";
+const std::string PIBTM::SOLVER_NAME = "PIBT-allTimeFlow";
 // const std::string PIBTM::SOLVER_NAME = "PIBTM";
 
 // 初始化 PIBT 路径规划求解器实例。

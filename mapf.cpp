@@ -128,7 +128,7 @@ std::unique_ptr<MAPF_Solver> getSolver(const std::string solver_name,
   {
     solver = std::make_unique<PIBT>(P);
   }
-  else if (solver_name == "PIBTM")
+  else if (solver_name == "PIBTM" || solver_name == "PIBT-allTimeFlow")
   {
     solver = std::make_unique<PIBTM>(P);
   }
