@@ -237,46 +237,48 @@ void MAPF_Solver::printResult()
             << solution.getMakespan() << " (LB=" << std::right << std::setw(6)
             << getLowerBoundMakespan() << ")" << std::endl;
 
-  string to_csv_path = "../result/experimental_results.csv";
+  // 求解成功再保存实验结果
+  if (solved) {
+    string to_csv_path = "../result/experimental_results.csv";
 
-  std::ofstream to_csv(to_csv_path, std::ios::app);  // 以追加模式打开文件
-  if (!to_csv.is_open()) {
+    std::ofstream to_csv(to_csv_path, std::ios::app);  // 以追加模式打开文件
+    if (!to_csv.is_open()) {
       std::cerr << "Error opening csv!" << std::endl;
       return;
+    }
+
+    to_csv << -1 << ","; // id
+
+    to_csv << reinterpret_cast<Grid*>(P->getG())->getMapFileName() << ","; // instance
+
+    to_csv << "randGen" << ","; // agent file, random generated.
+
+    to_csv << P->getNum() << ","; // num of agents
+    to_csv << get_cpu_name() << ","; // device
+    string method_name = "NULL"; // 可以是Lacam, 但这里就只是NULL了
+    to_csv << method_name<< ","; // high level method
+    to_csv << getSolverName() << ","; // low level method
+    int disappear_at_goal = 2; // 既不是停在终点, 也不是在终点消失; 而是在终点晃动
+    to_csv << disappear_at_goal << ","; // disappear or not
+    to_csv << P->getMaxTimestep() << ","; // CAT break-tie, 现在记录max timestep.
+    to_csv << P->rand_seed << ","; // random seed
+
+    to_csv << solution.getSOC() << ","; // cost
+
+    to_csv << getCompTime() / 1000.0 << ",";
+    to_csv << "NULL" << ","; // comment
+    to_csv << "https://github.com/ssfc/pibt2" << ","; // method source
+
+    // 获取当前时间点
+    auto now = std::chrono::system_clock::now();
+
+    // 转换为 time_t 格式
+    std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
+
+    // 输出时间
+    to_csv << std::put_time(std::localtime(&currentTime), "%Y-%m-%d %H:%M:%S")
+           << "\n";
   }
-
-  to_csv << -1 << ","; // id
-
-  to_csv << reinterpret_cast<Grid*>(P->getG())->getMapFileName() << ","; // instance
-
-  to_csv << "randGen" << ","; // agent file, random generated.
-
-  to_csv << P->getNum() << ","; // num of agents
-  to_csv << get_cpu_name() << ","; // device
-  string method_name = "NULL"; // 可以是Lacam, 但这里就只是NULL了
-  to_csv << method_name<< ","; // high level method
-  to_csv << getSolverName() << ","; // low level method
-  int disappear_at_goal = 2; // 既不是停在终点, 也不是在终点消失; 而是在终点晃动
-  to_csv << disappear_at_goal << ","; // disappear or not
-  to_csv << P->getMaxTimestep() << ","; // CAT break-tie, 现在记录max timestep.
-  to_csv << P->rand_seed << ","; // random seed
-
-  to_csv << solution.getSOC() << ","; // cost
-
-  to_csv << getCompTime() / 1000.0 << ",";
-  to_csv << "NULL" << ","; // comment
-  to_csv << "https://github.com/ssfc/pibt2" << ","; // method source
-
-  // 获取当前时间点
-  auto now = std::chrono::system_clock::now();
-
-  // 转换为 time_t 格式
-  std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
-
-  // 输出时间
-  to_csv << std::put_time(std::localtime(&currentTime), "%Y-%m-%d %H:%M:%S")
-         << "\n";
-
 }
 
 void MinimumSolver::printHelpWithoutOption(const std::string& solver_name)
