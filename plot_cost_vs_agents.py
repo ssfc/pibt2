@@ -54,6 +54,7 @@ def main():
             (df.get("map_file") == args.map_file) &
             (df.get("agent_file") == args.agent_file) &
             (df.get("device") == "12400F") &
+            (df.get("high level planner") == "no") &
             (df.get("low level planner") == "PIBT") &
             (df.get("disappear_at_goal") == 2)
     )
@@ -62,6 +63,7 @@ def main():
             (df.get("map_file") == args.map_file) &
             (df.get("agent_file") == args.agent_file) &
             (df.get("device") == "12400F") &
+            (df.get("high level planner") == "no") &
             (df.get("low level planner") == "PIBT-allTimeFlow") &
             (df.get("disappear_at_goal") == 2)
     )
@@ -85,6 +87,8 @@ def main():
     if filtered_CBSFlow.empty:
         print("筛选后数值列为空（num_agents 或 cost 无法转换为数值）。", file=sys.stderr)
         sys.exit(3)
+
+    #print(filtered_CBSFlow["high level planner"])
 
     filtered_CBSFlow["num_agents"] = pd.to_numeric(filtered_CBSFlow["num_agents"], errors="coerce")
     filtered_CBSFlow["cost"] = pd.to_numeric(filtered_CBSFlow["cost"], errors="coerce")
