@@ -69,13 +69,14 @@ def main():
         "map_file": args.map_file,
         "agent_file": args.agent_file,
         "device": "12400F",
-        "disappear_at_goal": 1,
+        "disappear_at_goal": 2,
     }
 
     # 不同方法的附加条件与样式
     methods: Tuple[Tuple[str, Dict[str, object], Dict[str, object]], ...] = (
+        ("PIBT", {"high level planner": "no", "low level planner": "PIBT"}, {"marker": "^"}),
         #("CBS", {"high level planner": "CBS-whoenig"}, {"marker": "^"}),
-        ("CBSDepth", {"high level planner": "CBSDepth-whoenig"}, {"marker": "v"}),
+        #("CBSDepth", {"high level planner": "CBSDepth-whoenig"}, {"marker": "v"}),
         #("CBSDepthKNN", {"high level planner": "CBSDepthKNN"}, {"marker": "^"}),
         #("CBSDepthKNNSparse", {"high level planner": "CBSDepthKNNSparse"}, {"marker": "v"}),
         #("CBSDepthSelectConflict", {"high level planner": "CBSDepthSelectConflict"}, {"marker": "^"}),
@@ -85,7 +86,7 @@ def main():
         #("CBSDepthLazyAvoidBuzy", {"high level planner": "CBSDepthLazyAvoidBusy"}, {"marker": "v"}),
         #("SelectConflict+constraintByOrder", {"high level planner": "CBSDepthSelectConflict+constraintByOrder"}, {"marker": "*"}),
         #("CBSDepthLengthOrder", {"high level planner": "CBSDepthLengthOrder"}, {"marker": "^"}),
-        ("CBSDepthLengthOrderReverse", {"high level planner": "CBSDepthLengthOrderReverse"}, {"marker": "^"}),
+        #("CBSDepthLengthOrderReverse", {"high level planner": "CBSDepthLengthOrderReverse"}, {"marker": "^"}),
         #("CBSDepthBeam2", {"high level planner": "CBSFlowBeam-whoenig", "comment": 2}, {"marker": "*"}),
         #("CBSDepthBeam8", {"high level planner": "CBSFlowBeam-whoenig", "comment": 8}, {"marker": "v"}),
     )
