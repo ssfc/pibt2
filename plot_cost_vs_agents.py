@@ -46,21 +46,24 @@ def main():
     # 读取 CSV
     df = pd.read_csv(args.csv)
 
+    args.map_file = "arena.map"
+    args.agent_file = "randGen"
+
     # 筛选条件
     mask_CBS = (
             (df.get("map_file") == args.map_file) &
             (df.get("agent_file") == args.agent_file) &
             (df.get("device") == "12400F") &
-            (df.get("high level planner") == "CBSDepthProbAvoid") &
-            (df.get("disappear_at_goal") == 1)
+            (df.get("low level planner") == "PIBT") &
+            (df.get("disappear_at_goal") == 2)
     )
 
     mask_CBSFlow = (
             (df.get("map_file") == args.map_file) &
             (df.get("agent_file") == args.agent_file) &
             (df.get("device") == "12400F") &
-            (df.get("high level planner") == "CBSDepthIncrementalUpdateOrder") &
-            (df.get("disappear_at_goal") == 1)
+            (df.get("low level planner") == "PIBT-allTimeFlow") &
+            (df.get("disappear_at_goal") == 2)
     )
 
     filtered_CBS = df[mask_CBS].copy()
