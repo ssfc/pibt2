@@ -115,7 +115,7 @@ def main():
 
     plt.legend()  # 添加图例说明
 
-    plt.title("Comparision: CBS, CBSFlow, CBSFlowBeam2", fontsize=12)
+    plt.title("Comparision: CBS, CBSFlow", fontsize=12)
     plt.xlabel("num_agents (x-axis)", fontsize=11)
     plt.ylabel("cost (y-axis)", fontsize=11)
     plt.grid(True, linestyle="--", alpha=0.4)
