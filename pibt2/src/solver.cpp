@@ -253,7 +253,7 @@ void MAPF_Solver::printResult()
 
   to_csv << P->getNum() << ","; // num of agents
   to_csv << get_cpu_name() << ","; // device
-  string method_name = "NULL"; // 可以是Lacam, 但这里就只是NULL了
+  string method_name = "no"; // 可以是Lacam, 但这里就只是no了
   to_csv << method_name<< ","; // high level method
   to_csv << getSolverName() << ","; // low level method
   int disappear_at_goal = 2; // 既不是停在终点, 也不是在终点消失; 而是在终点晃动
