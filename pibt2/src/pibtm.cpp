@@ -9,8 +9,9 @@
 
 using namespace std;
 
-const std::string PIBTM::SOLVER_NAME = "PIBT";
+// const std::string PIBTM::SOLVER_NAME = "PIBT";
 // const std::string PIBTM::SOLVER_NAME = "PIBT-allTimeFlow";
+const std::string PIBTM::SOLVER_NAME = "PIBT-allTimeFlow-reverse";
 // const std::string PIBTM::SOLVER_NAME = "PIBTM";
 
 // 初始化 PIBT 路径规划求解器实例。
@@ -494,7 +495,7 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
     }
     else {
       return window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)]
-      > window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_ux, delta_uy)];
+      < window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_ux, delta_uy)];
     }
 
     // tie break
@@ -515,8 +516,8 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
   // randomize
   std::shuffle(C.begin(), C.end(), *MT);
   // sort
-  std::sort(C.begin(), C.end(), compare_dist);
-  // std::sort(C.begin(), C.end(), compare_dist_flow);
+  // std::sort(C.begin(), C.end(), compare_dist);
+  std::sort(C.begin(), C.end(), compare_dist_flow);
 
   for (auto u : C) {
     // avoid conflicts
