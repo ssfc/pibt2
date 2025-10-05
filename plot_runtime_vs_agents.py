@@ -75,9 +75,10 @@ def main():
     # 不同方法的附加条件与样式
     methods: Tuple[Tuple[str, Dict[str, object], Dict[str, object]], ...] = (
         ("PIBT", {"high level planner": "no", "low level planner": "PIBT"}, {"marker": "*"}),
-        ("PIBT-allTimeFlow", {"high level planner": "no", "low level planner": "PIBT-allTimeFlow"}, {"marker": "v"}),
+        #("PIBT-allTimeFlow", {"high level planner": "no", "low level planner": "PIBT-allTimeFlow"}, {"marker": "v"}),
         #("PIBT-allTimeFlow-reverse", {"high level planner": "no", "low level planner": "PIBT-allTimeFlow-reverse"}, {"marker": "^"}),
-        ("PIBT-windowTimeFlow", {"high level planner": "no", "low level planner": "PIBT-windowTimeFlow", "numHighNodes": 5}, {"marker": "^"}),
+        ("PIBT-window5TimeFlow", {"high level planner": "no", "low level planner": "PIBT-windowTimeFlow", "numHighNodes": 5}, {"marker": "^"}),
+        ("PIBT-window10TimeFlow", {"high level planner": "no", "low level planner": "PIBT-windowTimeFlow", "numHighNodes": 10}, {"marker": "v"}),
         #("CBS", {"high level planner": "CBS-whoenig"}, {"marker": "^"}),
         #("CBSDepth", {"high level planner": "CBSDepth-whoenig"}, {"marker": "v"}),
         #("CBSDepthKNN", {"high level planner": "CBSDepthKNN"}, {"marker": "^"}),
