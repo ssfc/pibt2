@@ -77,7 +77,7 @@ def main():
         ("PIBT", {"high level planner": "no", "low level planner": "PIBT"}, {"marker": "*"}),
         ("PIBT-allTimeFlow", {"high level planner": "no", "low level planner": "PIBT-allTimeFlow"}, {"marker": "v"}),
         #("PIBT-allTimeFlow-reverse", {"high level planner": "no", "low level planner": "PIBT-allTimeFlow-reverse"}, {"marker": "^"}),
-        ("PIBT-windowTimeFlow", {"high level planner": "no", "low level planner": "PIBT-windowTimeFlow"}, {"marker": "^"}),
+        ("PIBT-windowTimeFlow", {"high level planner": "no", "low level planner": "PIBT-windowTimeFlow", "numHighNodes": 5}, {"marker": "^"}),
         #("CBS", {"high level planner": "CBS-whoenig"}, {"marker": "^"}),
         #("CBSDepth", {"high level planner": "CBSDepth-whoenig"}, {"marker": "v"}),
         #("CBSDepthKNN", {"high level planner": "CBSDepthKNN"}, {"marker": "^"}),
