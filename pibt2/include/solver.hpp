@@ -35,7 +35,7 @@ protected:
   // 时间窗范围内的流量场之和, 有四个方向, 0右, 1左, 2下, 3上
   vector<vector<vector<int>>> window_flow_sum;
 
-  int window_size = 5;
+  int window_size = 10;
 
 private:
   int comp_time;             // computation time
