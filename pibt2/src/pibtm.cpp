@@ -11,7 +11,8 @@ using namespace std;
 
 // const std::string PIBTM::SOLVER_NAME = "PIBT";
 // const std::string PIBTM::SOLVER_NAME = "PIBT-allTimeFlow";
-const std::string PIBTM::SOLVER_NAME = "PIBT-allTimeFlow-reverse";
+// const std::string PIBTM::SOLVER_NAME = "PIBT-allTimeFlow-reverse";
+const std::string PIBTM::SOLVER_NAME = "PIBT-windowTimeFlow";
 // const std::string PIBTM::SOLVER_NAME = "PIBTM";
 
 // 初始化 PIBT 路径规划求解器实例。
@@ -28,7 +29,7 @@ void PIBTM::keep_window_flow()
 {
   window_flow_each.emplace_back(current_flow);
 
-  if (window_flow_each.size() > 5) {
+  if (window_flow_each.size() > window_size) {
     auto early_flow = window_flow_each.front();
 
     /*
@@ -420,7 +421,7 @@ void PIBTM::run()
     // update plan
     solution.add(config);
 
-    // keep_window_flow();
+    keep_window_flow();
 
     ++timestep;
 
@@ -495,7 +496,7 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
     }
     else {
       return window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_vx, delta_vy)]
-      < window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_ux, delta_uy)];
+      > window_flow_sum[ai->v_now->pos.x][ai->v_now->pos.y][delta_to_index(delta_ux, delta_uy)];
     }
 
     // tie break
