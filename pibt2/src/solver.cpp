@@ -280,7 +280,10 @@ void MAPF_Solver::printResult()
 
   // 输出时间
   to_csv << std::put_time(std::localtime(&currentTime), "%Y-%m-%d %H:%M:%S")
-         << "\n";
+         << ",";
+
+  // 输出window尺寸
+  to_csv << window_size << "\n";
 
 }
 

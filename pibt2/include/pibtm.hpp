@@ -83,8 +83,6 @@ private:
   // 流量场, 有四个方向, 0右, 1左, 2下, 3上
   vector<vector<vector<int>>> current_flow;
 
-  int window_size = 5;
-
   // PIBT agent
   struct Agent {
     int id;
