@@ -121,6 +121,10 @@ void PIBTM::run()
   cout << "map num column: " << grid->getWidth() << endl;
   cout << "agent num: " << A.size() << endl;
 
+  if (SOLVER_NAME == "PIBT-windowTimeFlow") {
+    cout << "window size: " << window_size << endl;
+  }
+
   // 流量场分配空间
   window_flow_sum.resize(grid->getHeight());
   for(auto& row : window_flow_sum)
