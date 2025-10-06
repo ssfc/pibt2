@@ -238,7 +238,7 @@ void PIBTM::run()
   cout << "A[0] region mainstream inner product: " << A[0]->region_mainstream_inner_product << endl;
 
   // 统计每个cell的等待时长
-  std::vector<std::vector<int>> wait_count(grid->getHeight(),
+  std::vector<std::vector<int>> cell_wait_count(grid->getHeight(),
                                            std::vector<int>(grid->getWidth(), 0));
 
 
@@ -411,7 +411,7 @@ void PIBTM::run()
       if(a->v_next != a->g && // 没有到达目标才需要计算等待
           a->v_now->pos.x == a->v_next->pos.x && a->v_now->pos.y == a->v_next->pos.y)
       {
-        wait_count[a->v_now->pos.y][a->v_now->pos.x] += 1;
+        cell_wait_count[a->v_now->pos.y][a->v_now->pos.x] += 1;
       }
 
       // reset params
@@ -449,7 +449,7 @@ void PIBTM::run()
   /*
   cout << "wait num:" << endl;
   int total_wait = 0;
-  for(const auto& row : wait_count)
+  for(const auto& row : cell_wait_count)
   {
     for(auto column : row)
     {
