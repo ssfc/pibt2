@@ -241,7 +241,7 @@ void PIBTM::run()
   std::vector<std::vector<int>> cell_wait_count(grid->getHeight(),
                                            std::vector<int>(grid->getWidth(), 0));
 
-
+  vector<int> agent_wait_count(P->getNum(), 0);
 
   // main loop
   int timestep = 0;
