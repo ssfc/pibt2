@@ -12,8 +12,9 @@ using namespace std;
 // const std::string PIBTM::SOLVER_NAME = "PIBT";
 // const std::string PIBTM::SOLVER_NAME = "PIBT-allTimeFlow";
 // const std::string PIBTM::SOLVER_NAME = "PIBT-allTimeFlow-reverse";
-const std::string PIBTM::SOLVER_NAME = "PIBT-windowTimeFlow";
-// const std::string PIBTM::SOLVER_NAME = "PIBTM";
+// const std::string PIBTM::SOLVER_NAME = "PIBT-windowTimeFlow";
+const std::string PIBTM::SOLVER_NAME = "PIBTM";
+
 
 // 初始化 PIBT 路径规划求解器实例。
 PIBTM::PIBTM(MAPF_Instance* _P)
@@ -412,6 +413,7 @@ void PIBTM::run()
           a->v_now->pos.x == a->v_next->pos.x && a->v_now->pos.y == a->v_next->pos.y)
       {
         cell_wait_count[a->v_now->pos.y][a->v_now->pos.x] += 1;
+        agent_wait_count[a->id]++;
       }
 
       // reset params
@@ -447,7 +449,7 @@ void PIBTM::run()
   }
 
   /*
-  cout << "wait num:" << endl;
+  cout << "cell wait num:" << endl;
   int total_wait = 0;
   for(const auto& row : cell_wait_count)
   {
@@ -460,6 +462,16 @@ void PIBTM::run()
   }
   cout << "total wait: " << total_wait << endl;
    */
+
+  cout << "agent wait num:" << endl;
+  int total_wait = 0;
+  for(const auto& ele : agent_wait_count)
+  {
+    cout << ele << " ";
+    total_wait += ele;
+  }
+  cout << endl;
+  cout << "total wait: " << total_wait << endl;
 
   // 4. 内存回收
   // memory clear
@@ -521,8 +533,8 @@ bool PIBTM::funcPIBT(Agent* ai, Agent* aj)
   // randomize
   std::shuffle(C.begin(), C.end(), *MT);
   // sort
-  // std::sort(C.begin(), C.end(), compare_dist);
-  std::sort(C.begin(), C.end(), compare_dist_flow);
+  std::sort(C.begin(), C.end(), compare_dist);
+  // std::sort(C.begin(), C.end(), compare_dist_flow);
 
   for (auto u : C) {
     // avoid conflicts
